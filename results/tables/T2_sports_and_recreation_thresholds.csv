@@ -1,0 +1,25 @@
+,Group,Frequency,Threshold,N above,% above,N total
+0,in,Daily,0.3,41,87.2,47
+1,in,Daily,0.5,17,36.2,47
+2,in,Daily,0.6,8,17.0,47
+3,in,Daily,0.8,3,6.4,47
+4,in,Weekly,0.3,44,93.6,47
+5,in,Weekly,0.5,18,38.3,47
+6,in,Weekly,0.6,12,25.5,47
+7,in,Weekly,0.8,4,8.5,47
+8,post,Daily,0.3,49,86.0,57
+9,post,Daily,0.5,16,28.1,57
+10,post,Daily,0.6,10,17.5,57
+11,post,Daily,0.8,3,5.3,57
+12,post,Weekly,0.3,48,84.2,57
+13,post,Weekly,0.5,23,40.4,57
+14,post,Weekly,0.6,12,21.1,57
+15,post,Weekly,0.8,4,7.0,57
+16,pre,Daily,0.3,36,94.7,38
+17,pre,Daily,0.5,8,21.1,38
+18,pre,Daily,0.6,7,18.4,38
+19,pre,Daily,0.8,2,5.3,38
+20,pre,Weekly,0.3,36,94.7,38
+21,pre,Weekly,0.5,18,47.4,38
+22,pre,Weekly,0.6,10,26.3,38
+23,pre,Weekly,0.8,2,5.3,38

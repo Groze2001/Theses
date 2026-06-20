@@ -1,0 +1,4 @@
+Group,Daily Seasonality (md),Weekly Seasonality (md),Slope (md),Volatility (md),% Increasing,% Stable,% Decreasing,Residuals CV (md),Extreme ratio (md),Kurtosis (md)
+in,0.6443,0.6531,3e-05,0.7814,100.0,0,0,1.0256,0.0239,19.0859
+post,0.6867,0.6839,3.6e-05,0.7149,100.0,0,0,0.7213,0.0173,39.6213
+pre,0.6666,0.7263,1.5e-05,1.2487,100.0,0,0,1.1489,0.0213,26.0834

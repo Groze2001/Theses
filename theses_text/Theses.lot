@@ -1,0 +1,27 @@
+\babel@toc {english}{}\relax 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces Pattern Recognition Search Strategy Components}}{6}{table.caption.14}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Anomaly Detection Search Strategy Components}}{6}{table.caption.15}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Summary of dataset files and their main characteristics}}{12}{table.caption.28}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Description of the metadata file columns}}{13}{table.caption.29}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Distribution of missing samples across users}}{14}{table.caption.30}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces Distribution of contracted tariff period configurations}}{16}{table.caption.33}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces Sample distribution by sector}}{17}{table.caption.34}%
+\contentsline {table}{\numberline {3.6}{\ignorespaces Daily seasonal strength ($F_s$) by sector and COVID period}}{18}{table.caption.38}%
+\contentsline {table}{\numberline {3.7}{\ignorespaces Trend Slope and User Behavior Distribution Across Periods}}{23}{table.caption.43}%
+\contentsline {table}{\numberline {3.8}{\ignorespaces Train/validation/test splits by municipality}}{27}{table.caption.48}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces \ac {MAPE} comparison between \texttt {avg\_kwh\_per\_user} and \texttt {avg\_kwh}}}{30}{table.caption.53}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces \ac {MAPE} (\%) under two feature conditions.}}{33}{table.caption.59}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Test-set forecasting results by model and municipality. Best values among models free of data leakage in bold.}}{34}{table.caption.60}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Bootstrap validation: trimmed-mean \ac {MAPE}}}{37}{table.caption.63}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Anomaly detection results by method and municipality (test set)}}{39}{table.caption.64}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Ensemble-flagged anomalous days (values in \texttt {avg\_kwh}, mean kWh across active smart meters per day)}}{40}{table.caption.65}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }

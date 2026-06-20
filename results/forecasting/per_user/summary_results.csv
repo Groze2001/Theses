@@ -1,0 +1,4 @@
+municipality,Best model,Best RMSE,Best baseline,Baseline RMSE,Improvement vs baseline (%)
+Vitoria-Gasteiz,Random Forest Features,1.7129014600812595e-05,Seasonal Naive (365d),4.702302444241548e-05,63.573132940887646
+Donostia/San Sebastian,SARIMA,5.282779642965737e-05,Seasonal Naive (365d),5.830940853067807e-05,9.400904998267444
+Pamplona/Iruna,Random Forest Features,3.9554494465577825e-05,Seasonal Naive (365d),0.00010057356566960084,60.671082702267675

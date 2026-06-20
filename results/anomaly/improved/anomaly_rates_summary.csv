@@ -1,0 +1,73 @@
+city,method,period,anomaly_rate_%
+Vitoria-Gasteiz,Z-score,pre-COVID,
+Vitoria-Gasteiz,Z-score,in-COVID,
+Vitoria-Gasteiz,Z-score,post-COVID,0.0
+Vitoria-Gasteiz,Z-score,ALL,0.0
+Vitoria-Gasteiz,IForest,pre-COVID,
+Vitoria-Gasteiz,IForest,in-COVID,
+Vitoria-Gasteiz,IForest,post-COVID,2.36
+Vitoria-Gasteiz,IForest,ALL,2.36
+Vitoria-Gasteiz,LOF,pre-COVID,
+Vitoria-Gasteiz,LOF,in-COVID,
+Vitoria-Gasteiz,LOF,post-COVID,2.36
+Vitoria-Gasteiz,LOF,ALL,2.36
+Vitoria-Gasteiz,OC-SVM,pre-COVID,
+Vitoria-Gasteiz,OC-SVM,in-COVID,
+Vitoria-Gasteiz,OC-SVM,post-COVID,8.42
+Vitoria-Gasteiz,OC-SVM,ALL,8.42
+Vitoria-Gasteiz,K-Means,pre-COVID,
+Vitoria-Gasteiz,K-Means,in-COVID,
+Vitoria-Gasteiz,K-Means,post-COVID,24.24
+Vitoria-Gasteiz,K-Means,ALL,24.24
+Vitoria-Gasteiz,Ensemble,pre-COVID,
+Vitoria-Gasteiz,Ensemble,in-COVID,
+Vitoria-Gasteiz,Ensemble,post-COVID,1.01
+Vitoria-Gasteiz,Ensemble,ALL,1.01
+Donostia/San Sebastian,Z-score,pre-COVID,
+Donostia/San Sebastian,Z-score,in-COVID,
+Donostia/San Sebastian,Z-score,post-COVID,0.0
+Donostia/San Sebastian,Z-score,ALL,0.0
+Donostia/San Sebastian,IForest,pre-COVID,
+Donostia/San Sebastian,IForest,in-COVID,
+Donostia/San Sebastian,IForest,post-COVID,2.38
+Donostia/San Sebastian,IForest,ALL,2.38
+Donostia/San Sebastian,LOF,pre-COVID,
+Donostia/San Sebastian,LOF,in-COVID,
+Donostia/San Sebastian,LOF,post-COVID,2.38
+Donostia/San Sebastian,LOF,ALL,2.38
+Donostia/San Sebastian,OC-SVM,pre-COVID,
+Donostia/San Sebastian,OC-SVM,in-COVID,
+Donostia/San Sebastian,OC-SVM,post-COVID,9.86
+Donostia/San Sebastian,OC-SVM,ALL,9.86
+Donostia/San Sebastian,K-Means,pre-COVID,
+Donostia/San Sebastian,K-Means,in-COVID,
+Donostia/San Sebastian,K-Means,post-COVID,26.53
+Donostia/San Sebastian,K-Means,ALL,26.53
+Donostia/San Sebastian,Ensemble,pre-COVID,
+Donostia/San Sebastian,Ensemble,in-COVID,
+Donostia/San Sebastian,Ensemble,post-COVID,1.36
+Donostia/San Sebastian,Ensemble,ALL,1.36
+Pamplona/Iruna,Z-score,pre-COVID,
+Pamplona/Iruna,Z-score,in-COVID,
+Pamplona/Iruna,Z-score,post-COVID,0.36
+Pamplona/Iruna,Z-score,ALL,0.36
+Pamplona/Iruna,IForest,pre-COVID,
+Pamplona/Iruna,IForest,in-COVID,
+Pamplona/Iruna,IForest,post-COVID,1.09
+Pamplona/Iruna,IForest,ALL,1.09
+Pamplona/Iruna,LOF,pre-COVID,
+Pamplona/Iruna,LOF,in-COVID,
+Pamplona/Iruna,LOF,post-COVID,1.09
+Pamplona/Iruna,LOF,ALL,1.09
+Pamplona/Iruna,OC-SVM,pre-COVID,
+Pamplona/Iruna,OC-SVM,in-COVID,
+Pamplona/Iruna,OC-SVM,post-COVID,10.51
+Pamplona/Iruna,OC-SVM,ALL,10.51
+Pamplona/Iruna,K-Means,pre-COVID,
+Pamplona/Iruna,K-Means,in-COVID,
+Pamplona/Iruna,K-Means,post-COVID,26.45
+Pamplona/Iruna,K-Means,ALL,26.45
+Pamplona/Iruna,Ensemble,pre-COVID,
+Pamplona/Iruna,Ensemble,in-COVID,
+Pamplona/Iruna,Ensemble,post-COVID,0.72
+Pamplona/Iruna,Ensemble,ALL,0.72

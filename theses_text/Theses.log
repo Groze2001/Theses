@@ -1,0 +1,1385 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.5.1)  19 JUN 2026 21:06
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**c:/Users/GONCA/Desktop/Iscte/MCD/Theses/theses_text/Theses.tex
+(c:/Users/GONCA/Desktop/Iscte/MCD/Theses/theses_text/Theses.tex
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-03-26>
+(C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsbook.cls
+Document Class: amsbook 2020/05/29 v2.20.6
+\linespacing=\dimen146
+\normalparindent=\dimen147
+\normaltopskip=\skip49
+(C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2024/11/05 v2.17t AMS math features
+\@mathmargin=\skip50
+
+For additional information on amsmath, use the `?' option.
+(C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks17
+\ex@=\dimen148
+)) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen149
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count197
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count198
+\leftroot@=\count199
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count266
+\DOTSCASE@=\count267
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box53
+\strutbox@=\box54
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen150
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count268
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count269
+\dotsspace@=\muskip17
+\c@parentequation=\count270
+\dspbrk@lvl=\count271
+\tag@help=\toks18
+\row@=\count272
+\column@=\count273
+\maxfields@=\count274
+\andhelp@=\toks19
+\eqnshift@=\dimen151
+\alignsep@=\dimen152
+\tagshift@=\dimen153
+\tagwidth@=\dimen154
+\totwidth@=\dimen155
+\lineht@=\dimen156
+\@envbody=\toks20
+\multlinegap=\skip51
+\multlinetaggap=\skip52
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 376.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+\copyins=\insert252
+\abstractbox=\box55
+\listisep=\skip53
+\c@part=\count275
+\c@chapter=\count276
+\c@section=\count277
+\c@subsection=\count278
+\c@subsubsection=\count279
+\c@paragraph=\count280
+\c@subparagraph=\count281
+\c@figure=\count282
+\c@table=\count283
+\abovecaptionskip=\skip54
+\belowcaptionskip=\skip55
+\captionindent=\dimen157
+\thm@style=\toks22
+\thm@bodyfont=\toks23
+\thm@headfont=\toks24
+\thm@notefont=\toks25
+\thm@headpunct=\toks26
+\thm@preskip=\skip56
+\thm@postskip=\skip57
+\thm@headsep=\skip58
+\dth@everypar=\toks27
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/eurosym\eurosym.sty
+Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
+\@eurobox=\box56
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty
+Package: placeins 2005/04/18  v 2.2
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty
+Package: setspace 2022/12/04 v6.7b set line spacing
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/chngcntr\chngcntr.sty
+Package: chngcntr 2018/04/09 v1.1a change counter resetting
+Package chngcntr Info: \counterwithout already defined.
+(chngcntr)             Quitting chngcntr on input line 21.
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks28
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen158
+\Gin@req@width=\dimen159
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+Package: geometry 2026/03/07 v6.0 Page Geometry
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+))
+\Gm@cnth=\count284
+\Gm@cntv=\count285
+\c@Gm@tempcnt=\count286
+\Gm@bindingoffset=\dimen160
+\Gm@wd@mp=\dimen161
+\Gm@odd@mp=\dimen162
+\Gm@even@mp=\dimen163
+\Gm@layoutwidth=\dimen164
+\Gm@layoutheight=\dimen165
+\Gm@layouthoffset=\dimen166
+\Gm@layoutvoffset=\dimen167
+\Gm@dimlist=\toks29
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2025/04/14 v25.7 The multilingual framework for pdfLaTeX, LuaLaTeX and XeLaTeX
+\babel@savecnt=\count287
+\U@D=\dimen168
+\l@unhyphenated=\language79
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count288
+
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of babel
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/babel-english\english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: Hyphen rules for 'canadian' set to \l@english
+(babel)             (\language0). Reported on input line 102.
+Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
+(babel)             (\language73). Reported on input line 105.
+Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
+(babel)             (\language73). Reported on input line 108.
+)) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/en\babel-english.tex
+Package babel Info: Importing font and identification data for english
+(babel)             from babel-en.ini. Reported on input line 11.
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
+Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
+\f@nch@headwidth=\skip59
+\f@nch@offset@elh=\skip60
+\f@nch@offset@erh=\skip61
+\f@nch@offset@olh=\skip62
+\f@nch@offset@orh=\skip63
+\f@nch@offset@elf=\skip64
+\f@nch@offset@erf=\skip65
+\f@nch@offset@olf=\skip66
+\f@nch@offset@orf=\skip67
+\f@nch@height=\skip68
+\f@nch@footalignment=\skip69
+\f@nch@widthL=\skip70
+\f@nch@widthC=\skip71
+\f@nch@widthR=\skip72
+\@temptokenb=\toks30
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
+Package: titlesec 2025/01/04 v2.17 Sectioning titles
+\ttl@box=\box57
+\beforetitleunit=\skip73
+\aftertitleunit=\skip74
+\ttl@plus=\dimen169
+\ttl@minus=\dimen170
+\ttl@toksa=\toks31
+\titlewidth=\dimen171
+\titlewidthlast=\dimen172
+\titlewidthfirst=\dimen173
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty
+Package: enumitem 2025/02/06 v3.11 Customized lists
+\labelindent=\skip75
+\enit@outerparindent=\dimen174
+\enit@toks=\toks32
+\enit@inbox=\box58
+\enit@count@id=\count289
+\enitdp@description=\count290
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count291
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.sty
+Package: biblatex 2024/03/21 v3.20 programmable bibliographies (PK/MW)
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.sty
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count292
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.def
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+)) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+\c@tabx@nest=\count293
+\c@listtotal=\count294
+\c@listcount=\count295
+\c@liststart=\count296
+\c@liststop=\count297
+\c@citecount=\count298
+\c@citetotal=\count299
+\c@multicitecount=\count300
+\c@multicitetotal=\count301
+\c@instcount=\count302
+\c@maxnames=\count303
+\c@minnames=\count304
+\c@maxitems=\count305
+\c@minitems=\count306
+\c@citecounter=\count307
+\c@maxcitecounter=\count308
+\c@savedcitecounter=\count309
+\c@uniquelist=\count310
+\c@uniquename=\count311
+\c@refsection=\count312
+\c@refsegment=\count313
+\c@maxextratitle=\count314
+\c@maxextratitleyear=\count315
+\c@maxextraname=\count316
+\c@maxextradate=\count317
+\c@maxextraalpha=\count318
+\c@abbrvpenalty=\count319
+\c@highnamepenalty=\count320
+\c@lownamepenalty=\count321
+\c@maxparens=\count322
+\c@parenlevel=\count323
+\blx@tempcnta=\count324
+\blx@tempcntb=\count325
+\blx@tempcntc=\count326
+\c@blx@maxsection=\count327
+\blx@maxsegment@0=\count328
+\blx@notetype=\count329
+\blx@parenlevel@text=\count330
+\blx@parenlevel@foot=\count331
+\blx@sectionciteorder@0=\count332
+\blx@sectionciteorderinternal@0=\count333
+\blx@entrysetcounter=\count334
+\blx@biblioinstance=\count335
+\labelnumberwidth=\skip76
+\labelalphawidth=\skip77
+\biblabelsep=\skip78
+\bibitemsep=\skip79
+\bibnamesep=\skip80
+\bibinitsep=\skip81
+\bibparsep=\skip82
+\bibhang=\skip83
+\blx@bcfin=\read3
+\blx@bcfout=\write3
+\blx@langwohyphens=\language80
+\c@mincomprange=\count336
+\c@maxcomprange=\count337
+\c@mincompwidth=\count338
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-dm.def
+File: blx-dm.def 2024/03/21 v3.20 biblatex datamodel (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex style data model...
+Package biblatex Info: ... file 'ieee.dbx' not found.
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+\c@afterword=\count339
+\c@savedafterword=\count340
+\c@annotator=\count341
+\c@savedannotator=\count342
+\c@author=\count343
+\c@savedauthor=\count344
+\c@bookauthor=\count345
+\c@savedbookauthor=\count346
+\c@commentator=\count347
+\c@savedcommentator=\count348
+\c@editor=\count349
+\c@savededitor=\count350
+\c@editora=\count351
+\c@savededitora=\count352
+\c@editorb=\count353
+\c@savededitorb=\count354
+\c@editorc=\count355
+\c@savededitorc=\count356
+\c@foreword=\count357
+\c@savedforeword=\count358
+\c@holder=\count359
+\c@savedholder=\count360
+\c@introduction=\count361
+\c@savedintroduction=\count362
+\c@namea=\count363
+\c@savednamea=\count364
+\c@nameb=\count365
+\c@savednameb=\count366
+\c@namec=\count367
+\c@savednamec=\count368
+\c@translator=\count369
+\c@savedtranslator=\count370
+\c@shortauthor=\count371
+\c@savedshortauthor=\count372
+\c@shorteditor=\count373
+\c@savedshorteditor=\count374
+\c@labelname=\count375
+\c@savedlabelname=\count376
+\c@institution=\count377
+\c@savedinstitution=\count378
+\c@lista=\count379
+\c@savedlista=\count380
+\c@listb=\count381
+\c@savedlistb=\count382
+\c@listc=\count383
+\c@savedlistc=\count384
+\c@listd=\count385
+\c@savedlistd=\count386
+\c@liste=\count387
+\c@savedliste=\count388
+\c@listf=\count389
+\c@savedlistf=\count390
+\c@location=\count391
+\c@savedlocation=\count392
+\c@organization=\count393
+\c@savedorganization=\count394
+\c@origlocation=\count395
+\c@savedoriglocation=\count396
+\c@origpublisher=\count397
+\c@savedorigpublisher=\count398
+\c@publisher=\count399
+\c@savedpublisher=\count400
+\c@language=\count401
+\c@savedlanguage=\count402
+\c@origlanguage=\count403
+\c@savedoriglanguage=\count404
+\c@pageref=\count405
+\c@savedpageref=\count406
+\shorthandwidth=\skip84
+\shortjournalwidth=\skip85
+\shortserieswidth=\skip86
+\shorttitlewidth=\skip87
+\shortauthorwidth=\skip88
+\shorteditorwidth=\skip89
+\locallabelnumberwidth=\skip90
+\locallabelalphawidth=\skip91
+\localshorthandwidth=\skip92
+\localshortjournalwidth=\skip93
+\localshortserieswidth=\skip94
+\localshorttitlewidth=\skip95
+\localshortauthorwidth=\skip96
+\localshorteditorwidth=\skip97
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-compat.def
+File: blx-compat.def 2024/03/21 v3.20 biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.def
+File: biblatex.def 2024/03/21 v3.20 biblatex compatibility (PK/MW)
+\c@textcitecount=\count407
+\c@textcitetotal=\count408
+\c@textcitemaxnames=\count409
+\c@biburlbigbreakpenalty=\count410
+\c@biburlbreakpenalty=\count411
+\c@biburlnumpenalty=\count412
+\c@biburlucpenalty=\count413
+\c@biburllcpenalty=\count414
+\biburlbigskip=\muskip19
+\biburlnumskip=\muskip20
+\biburlucskip=\muskip21
+\biburllcskip=\muskip22
+\c@smartand=\count415
+)
+Package biblatex Info: Trying to load bibliography style 'ieee'...
+Package biblatex Info: ... file 'ieee.bbx' found.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-ieee\ieee.bbx
+File: ieee.bbx 2025-08-01 v1.4f biblatex bibliography style
+Package biblatex Info: Trying to load bibliography style 'numeric-comp'...
+Package biblatex Info: ... file 'numeric-comp.bbx' found.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\numeric-comp.bbx
+File: numeric-comp.bbx 2024/03/21 v3.20 biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'numeric'...
+Package biblatex Info: ... file 'numeric.bbx' found.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\numeric.bbx
+File: numeric.bbx 2024/03/21 v3.20 biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\standard.bbx
+File: standard.bbx 2024/03/21 v3.20 biblatex bibliography style (PK/MW)
+\c@bbx:relatedcount=\count416
+\c@bbx:relatedtotal=\count417
+))))
+Package biblatex Info: Trying to load citation style 'ieee'...
+Package biblatex Info: ... file 'ieee.cbx' found.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-ieee\ieee.cbx
+File: ieee.cbx 2025-08-01 v1.4f biblatex citation style
+Package biblatex Info: Trying to load citation style 'numeric-verb'...
+Package biblatex Info: ... file 'numeric-verb.cbx' found.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/cbx\numeric-verb.cbx
+File: numeric-verb.cbx 2024/03/21 v3.20 biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\supercite'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\smartcites'.
+Package biblatex Info: Redefining '\textcites'.
+))
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.cfg
+File: biblatex.cfg 
+)
+Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: Document encoding is UTF8 ....
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+Package: expl3 2025-03-26 L3 programming layer (loader) 
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
+File: l3backend-pdftex.def 2025-03-14 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count418
+))
+Package biblatex Info: ... and expl3
+(biblatex)             2025-03-26 L3 programming layer (loader) 
+(biblatex)             is new enough (at least 2020/04/06),
+(biblatex)             setting 'casechanger=expl3'.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-case-expl3.sty (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xparse.sty
+Package: xparse 2024-08-16 L3 Experimental document command parser
+)
+Package: blx-case-expl3 2024/03/21 v3.20 expl3 case changing code for biblatex
+)) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count419
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+)
+\@linkdim=\dimen175
+\Hy@linkcounter=\count420
+\Hy@pagecounter=\count421
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count422
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4157.
+Package hyperref Info: Link nesting OFF on input line 4162.
+Package hyperref Info: Hyper index ON on input line 4165.
+Package hyperref Info: Plain pages OFF on input line 4172.
+Package hyperref Info: Backreferencing OFF on input line 4177.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4424.
+\c@Hy@tempcnt=\count423
+LaTeX Info: Redefining \url on input line 4763.
+\XeTeXLinkMargin=\dimen176
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+))
+\Fld@menulength=\count424
+\Field@Width=\dimen177
+\Fld@charsize=\dimen178
+Package hyperref Info: Hyper figures OFF on input line 6042.
+Package hyperref Info: Link nesting OFF on input line 6047.
+Package hyperref Info: Hyper index ON on input line 6050.
+Package hyperref Info: backreferencing OFF on input line 6057.
+Package hyperref Info: Link coloring OFF on input line 6062.
+Package hyperref Info: Link coloring with OCG OFF on input line 6067.
+Package hyperref Info: PDF/A mode OFF on input line 6072.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count425
+\c@Item=\count426
+\c@Hfootnote=\count427
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2024-11-05 v7.01l Hyperref driver for pdfTeX
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
+with kernel methods
+)
+\Fld@listcount=\count428
+\c@bookmark@seq@number=\count429
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
+)
+\Hy@SectionHShift=\skip98
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/acronym\acronym.sty
+Package: acronym 2025/01/17 v1.50 Support for acronyms (Tobias Oetiker)
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/bigfoot\suffix.sty
+Package: suffix 2006/07/15 1.5a Variant command support
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring.sty (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstring.tex
+\xs_counta=\count430
+\xs_countb=\count431
+)
+Package: xstring 2023/08/22 v1.86 String manipulations (CT)
+)
+\AC@clearlist=\toks33
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+\lst@mode=\count432
+\lst@gtempboxa=\box59
+\lst@token=\toks34
+\lst@length=\count433
+\lst@currlwidth=\dimen179
+\lst@column=\count434
+\lst@pos=\count435
+\lst@lostspace=\dimen180
+\lst@width=\dimen181
+\lst@newlines=\count436
+\lst@lineno=\count437
+\lst@maxwidth=\dimen182
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
+File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
+\c@lstnumber=\count438
+\lst@skipnumbers=\count439
+\lst@framebox=\box60
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
+File: listings.cfg 2024/09/23 1.10c listings configuration
+))
+Package: listings 2024/09/23 1.10c (Carsten Heinz)
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen183
+\lightrulewidth=\dimen184
+\cmidrulewidth=\dimen185
+\belowrulesep=\dimen186
+\belowbottomsep=\dimen187
+\aboverulesep=\dimen188
+\abovetopsep=\dimen189
+\cmidrulesep=\dimen190
+\cmidrulekern=\dimen191
+\defaultaddspace=\dimen192
+\@cmidla=\count440
+\@cmidlb=\count441
+\@aboverulesep=\dimen193
+\@belowrulesep=\dimen194
+\@thisruleclass=\count442
+\@lastruleclass=\count443
+\@thisrulewidth=\dimen195
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
+Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
+\multirow@colwidth=\skip99
+\multirow@cntb=\count444
+\multirow@dima=\skip100
+\bigstrutjot=\dimen196
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjustbox.sty
+Package: adjustbox 2025/02/26 v1.3c Adjusting TeX boxes (trim, clip, ...)
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+\XKV@toks=\toks35
+\XKV@tempa@toks=\toks36
+)
+\XKV@depth=\count445
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back-ends (calc, etex, pgfmath)
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\trimclip.sty
+Package: trimclip 2025/02/21 v1.2a Trim and clip general TeX material
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/collectbox\collectbox.sty
+Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
+\collectedbox=\box61
+)
+\tc@llx=\dimen197
+\tc@lly=\dimen198
+\tc@urx=\dimen199
+\tc@ury=\dimen256
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\tc-pdftex.def
+File: tc-pdftex.def 2025/02/26 v2.3 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen257
+\adjbox@Height=\dimen258
+\adjbox@Depth=\dimen259
+\adjbox@Totalheight=\dimen260
+\adjbox@pwidth=\dimen261
+\adjbox@pheight=\dimen262
+\adjbox@pdepth=\dimen263
+\adjbox@ptotalheight=\dimen264
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/ifoddpage\ifoddpage.sty
+Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
+\c@checkoddpage=\count446
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/varwidth\varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box62
+\sift@deathcycles=\count447
+\@vwid@loff=\dimen265
+\@vwid@roff=\dimen266
+)) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen267
+\captionmargin=\dimen268
+\caption@leftmargin=\dimen269
+\caption@rightmargin=\dimen270
+\caption@width=\dimen271
+\caption@indent=\dimen272
+\caption@parindent=\dimen273
+\caption@hangindent=\dimen274
+Package caption Info: AMS or SMF document class detected.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption-ams-smf.sto
+File: caption-ams-smf.sto 2020/08/22 v2.0 Adaption of the caption package to the AMS and SMF document classes (AR)
+))
+\c@caption@flags=\count448
+\c@continuedfloat=\count449
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/caption\subcaption.sty
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count450
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count451
+)
+\c@acknowledgement=\count452
+\c@algorithm=\count453
+\c@axiom=\count454
+\c@case=\count455
+\c@claim=\count456
+\c@conclusion=\count457
+\c@condition=\count458
+\c@conjecture=\count459
+\c@corollary=\count460
+\c@criterion=\count461
+\c@definition=\count462
+\c@example=\count463
+\c@exercise=\count464
+\c@lemma=\count465
+\c@notation=\count466
+\c@problem=\count467
+\c@proposition=\count468
+\c@remark=\count469
+\c@solution=\count470
+\c@summary=\count471
+\c@theorem=\count472
+
+
+Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
+(biblatex)                Loading 'csquotes' recommended.
+
+\@quotelevel=\count473
+\@quotereset=\count474
+(Theses.aux)
+\openout1 = `Theses.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 150.
+LaTeX Font Info:    ... okay on input line 150.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 150.
+LaTeX Font Info:    ... okay on input line 150.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 150.
+LaTeX Font Info:    ... okay on input line 150.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 150.
+LaTeX Font Info:    ... okay on input line 150.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 150.
+LaTeX Font Info:    ... okay on input line 150.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 150.
+LaTeX Font Info:    ... okay on input line 150.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 150.
+LaTeX Font Info:    ... okay on input line 150.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 150.
+LaTeX Font Info:    ... okay on input line 150.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 150.
+LaTeX Font Info:    ... okay on input line 150.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 150.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 150.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count475
+\scratchdimen=\dimen275
+\scratchbox=\box63
+\nofMPsegments=\count476
+\nofMParguments=\count477
+\everyMPshowfont=\toks37
+\MPscratchCnt=\count478
+\MPscratchDim=\dimen276
+\MPnumerator=\count479
+\makeMPintoPDFobject=\count480
+\everyMPtoPDFconversion=\toks38
+) (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=702.78308pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-23.1381pt
+* \headheight=8.0pt
+* \headsep=14.0pt
+* \topskip=10.0pt
+* \footskip=18.0pt
+* \marginparwidth=90.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=7.0pt plus 11.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+(C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\english.lbx
+File: english.lbx 2024/03/21 v3.20 biblatex localization (PK/MW)
+)
+Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'utf8'.
+\openout3 = `Theses.bcf'.
+
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file 'Theses.bbl' found.
+ (Theses.bbl)
+Package biblatex Info: Reference section=0 on input line 150.
+Package biblatex Info: Reference segment=0 on input line 150.
+Package hyperref Info: Link coloring OFF on input line 150.
+ (Theses.out) (Theses.out)
+\@outlinefile=\write4
+\openout4 = `Theses.out'.
+
+\c@lstlisting=\count481
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+<images/iscte.pdf, id=225, 567.02905pt x 286.39433pt>
+File: images/iscte.pdf Graphic file (type pdf)
+<use images/iscte.pdf>
+Package pdftex.def Info: images/iscte.pdf  used on input line 154.
+(pdftex.def)             Requested size: 171.57007pt x 86.65749pt.
+LaTeX Font Info:    Trying to load font information for OT1+Montserrat-TOsF on input line 156.
+ (C:\Users\GONCA\AppData\Local\Programs\MiKTeX\tex/latex/montserrat\ot1montserrat-tosf.fd
+File: OT1Montserrat-TOsF.fd 2019/11/07 (autoinst) Font definitions for OT1/Montserrat-TOsF.
+)
+LaTeX Font Info:    Font shape `OT1/Montserrat-TOsF/m/n' aliased to
+(Font)              `OT1/Montserrat-TOsF/regular/n' on input line 156.
+
+
+[1{C:/Users/GONCA/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/GONCA/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/montserrat/zmo_nszfm3.enc} <./images/iscte.pdf>]
+
+[2
+
+
+]
+<images/ista.png, id=237, 2395.95125pt x 1071.00125pt>
+File: images/ista.png Graphic file (type png)
+<use images/ista.png>
+Package pdftex.def Info: images/ista.png  used on input line 189.
+(pdftex.def)             Requested size: 154.78133pt x 69.17628pt.
+<images/ibs.png, id=239, 576.4737pt x 259.2084pt>
+File: images/ibs.png Graphic file (type png)
+<use images/ibs.png>
+Package pdftex.def Info: images/ibs.png  used on input line 190.
+(pdftex.def)             Requested size: 154.78133pt x 69.59563pt.
+
+
+[3 <./images/ista.png> <./images/ibs.png>]
+
+[4
+
+
+]
+
+[1
+
+
+
+
+
+
+]
+
+[2
+
+
+]
+Acknowledgment
+
+
+[3]
+
+[4
+
+
+]
+Resumo
+
+
+[5]
+
+[6
+
+
+]
+Abstract
+
+
+[7]
+
+[8
+
+
+]
+Contents
+(Theses.toc
+Package acronym Info: Label `acro:CNAE' newly defined as it shall be overridden
+although it is yet undefined on input line 34.
+
+Underfull \vbox (badness 4429) has occurred while \output is active []
+
+
+
+[9])
+\tf@toc=\write5
+\openout5 = `Theses.toc'.
+
+
+
+[10]
+List of Figures
+(Theses.lof
+Overfull \hbox (2.88867pt too wide) detected at line 18
+\OT1/cmr/m/n/12 3.10 
+ []
+
+Package acronym Info: Label `acro:NBEATS' newly defined as it shall be overridden
+although it is yet undefined on input line 21.
+)
+\tf@lof=\write6
+\openout6 = `Theses.lof'.
+
+
+
+[11
+
+
+]
+
+[12
+
+
+]
+List of Tables
+(Theses.lot
+Package acronym Info: Label `acro:MAPE' newly defined as it shall be overridden
+although it is yet undefined on input line 20.
+)
+\tf@lot=\write7
+\openout7 = `Theses.lot'.
+
+
+
+[13]
+
+[14
+
+
+]
+List of Acronyms
+
+
+[15
+
+
+]
+
+[16
+
+
+]
+Chapter 1
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.369 
+       [1
+
+
+
+
+
+
+]
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.392 
+       [2]
+Package acronym Info: Label `acro:CRISP-DM' newly defined as it shall be overridden
+although it is yet undefined on input line 418.
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.427 
+       [3]
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.435 \chapter
+              {Literature Review} [4]
+Chapter 2
+Package acronym Info: Label `acro:IoT' newly defined as it shall be overridden
+although it is yet undefined on input line 439.
+Package acronym Info: Label `acro:AMI' newly defined as it shall be overridden
+although it is yet undefined on input line 439.
+Package acronym Info: Label `acro:SLR' newly defined as it shall be overridden
+although it is yet undefined on input line 449.
+Package acronym Info: Label `acro:PRISMA' newly defined as it shall be overridden
+although it is yet undefined on input line 451.
+
+Underfull \hbox (badness 2744) in paragraph at lines 466--467
+[]\OT1/cmr/m/n/12 "energy read-ing*" OR "en-ergy con-sump-tion" OR
+ []
+
+
+Underfull \hbox (badness 2744) in paragraph at lines 488--489
+[]\OT1/cmr/m/n/12 "energy read-ing*" OR "en-ergy con-sump-tion" OR
+ []
+
+
+
+[5
+
+
+]
+Package acronym Info: Label `acro:AI' newly defined as it shall be overridden
+although it is yet undefined on input line 515.
+Package acronym Info: Label `acro:ML' newly defined as it shall be overridden
+although it is yet undefined on input line 515.
+
+
+[6]
+Package acronym Info: Label `acro:LSTM' newly defined as it shall be overridden
+although it is yet undefined on input line 521.
+Package acronym Info: Label `acro:CINN' newly defined as it shall be overridden
+although it is yet undefined on input line 523.
+Package acronym Info: Label `acro:CVA' newly defined as it shall be overridden
+although it is yet undefined on input line 523.
+Package acronym Info: Label `acro:LOF' newly defined as it shall be overridden
+although it is yet undefined on input line 531.
+Package acronym Info: Label `acro:SVM' newly defined as it shall be overridden
+although it is yet undefined on input line 531.
+Package acronym Info: Label `acro:PCA' newly defined as it shall be overridden
+although it is yet undefined on input line 531.
+
+
+[7]
+Package acronym Info: Label `acro:GMMs' newly defined as it shall be overridden
+although it is yet undefined on input line 533.
+Package acronym Info: Label `acro:DR' newly defined as it shall be overridden
+although it is yet undefined on input line 540.
+Package acronym Info: Label `acro:CNN' newly defined as it shall be overridden
+although it is yet undefined on input line 542.
+Package acronym Info: Label `acro:RNN' newly defined as it shall be overridden
+although it is yet undefined on input line 542.
+
+Underfull \vbox (badness 6510) has occurred while \output is active []
+
+
+
+[8]
+Overfull \hbox (1.72615pt too wide) in paragraph at lines 559--560
+\OT1/cmr/m/n/12 Prediction-, reconstruction-, and un-su-per-vised learn-ing{based ap-proaches dom-i-nate anom-
+ []
+
+
+Overfull \hbox (8.3673pt too wide) in paragraph at lines 559--560
+\OT1/cmr/m/n/12 mod-els con-sis-tently out-per-form-ing tra-di-tional [][] ar-chi-tec-tures [[]6[]], [[]14[]]. Reconstruction-
+ []
+
+
+
+[9]
+
+[10]
+Chapter 3
+
+Underfull \vbox (badness 1237) has occurred while \output is active []
+
+
+
+[11
+
+
+]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[12]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[13]
+<images/distributionActiveTariffPeriods.png, id=762, 714.7503pt x 426.393pt>
+File: images/distributionActiveTariffPeriods.png Graphic file (type png)
+<use images/distributionActiveTariffPeriods.png>
+Package pdftex.def Info: images/distributionActiveTariffPeriods.png  used on input line 703.
+(pdftex.def)             Requested size: 455.24411pt x 271.58934pt.
+<images/whiskerplotoflengthyears.png, id=764, 411.939pt x 321.6015pt>
+File: images/whiskerplotoflengthyears.png Graphic file (type png)
+<use images/whiskerplotoflengthyears.png>
+Package pdftex.def Info: images/whiskerplotoflengthyears.png  used on input line 712.
+(pdftex.def)             Requested size: 318.66948pt x 248.78221pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[14]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[15 <./images/distributionActiveTariffPeriods.png> <./images/whiskerplotoflengthyears.png>]
+Package acronym Info: Label `acro:CNAE' overridden on input line 803.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[16]
+Underfull \vbox (badness 2644) has occurred while \output is active []
+
+
+
+[17]
+Package acronym Info: Label `acro:STL' newly defined as it shall be overridden
+although it is yet undefined on input line 816.
+<images/Daily_Seasonality.png, id=797, 426.393pt x 281.853pt>
+File: images/Daily_Seasonality.png Graphic file (type png)
+<use images/Daily_Seasonality.png>
+Package pdftex.def Info: images/Daily_Seasonality.png  used on input line 835.
+(pdftex.def)             Requested size: 455.24411pt x 300.93462pt.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ac' on input line 863.
+
+
+
+[18]
+<images/CnaeDistribution.png, id=811, 642.11896pt x 1582.35165pt>
+File: images/CnaeDistribution.png Graphic file (type png)
+<use images/CnaeDistribution.png>
+Package pdftex.def Info: images/CnaeDistribution.png  used on input line 869.
+(pdftex.def)             Requested size: 386.96027pt x 953.59537pt.
+
+
+LaTeX Warning: Float too large for page by 304.81229pt on input line 872.
+
+<images/1a_household_production_daily.png, id=817, 497.6994pt x 278.9622pt>
+File: images/1a_household_production_daily.png Graphic file (type png)
+<use images/1a_household_production_daily.png>
+Package pdftex.def Info: images/1a_household_production_daily.png  used on input line 882.
+(pdftex.def)             Requested size: 455.24411pt x 255.1713pt.
+
+
+[19 <./images/Daily_Seasonality.png>]
+
+[20 <./images/CnaeDistribution.png>]
+<images/1a_public_administration_daily.png, id=830, 497.6994pt x 278.9622pt>
+File: images/1a_public_administration_daily.png Graphic file (type png)
+<use images/1a_public_administration_daily.png>
+Package pdftex.def Info: images/1a_public_administration_daily.png  used on input line 895.
+(pdftex.def)             Requested size: 455.24411pt x 255.1713pt.
+
+
+[21 <./images/1a_household_production_daily.png>]
+<images/distributionAnnualizedTrend.png, id=840, 425.6703pt x 328.8285pt>
+File: images/distributionAnnualizedTrend.png Graphic file (type png)
+<use images/distributionAnnualizedTrend.png>
+Package pdftex.def Info: images/distributionAnnualizedTrend.png  used on input line 915.
+(pdftex.def)             Requested size: 455.24411pt x 351.68246pt.
+
+
+[22 <./images/1a_public_administration_daily.png>]
+<images/TrendVsSeasonality.png, id=846, 408.3255pt x 328.8285pt>
+File: images/TrendVsSeasonality.png Graphic file (type png)
+<use images/TrendVsSeasonality.png>
+Package pdftex.def Info: images/TrendVsSeasonality.png  used on input line 943.
+(pdftex.def)             Requested size: 455.24411pt x 366.6196pt.
+Package acronym Info: Label `acro:CV' newly defined as it shall be overridden
+although it is yet undefined on input line 950.
+
+
+[23 <./images/distributionAnnualizedTrend.png>]
+<images/extremeResidual.png, id=855, 859.2903pt x 281.853pt>
+File: images/extremeResidual.png Graphic file (type png)
+<use images/extremeResidual.png>
+Package pdftex.def Info: images/extremeResidual.png  used on input line 956.
+(pdftex.def)             Requested size: 455.24411pt x 149.32117pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[24 <./images/TrendVsSeasonality.png>]
+<images/DensityResidual.png, id=864, 859.2903pt x 642.4803pt>
+File: images/DensityResidual.png Graphic file (type png)
+<use images/DensityResidual.png>
+Package pdftex.def Info: images/DensityResidual.png  used on input line 972.
+(pdftex.def)             Requested size: 455.24411pt x 340.37569pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[25 <./images/extremeResidual.png>]
+
+[26 <./images/DensityResidual.png>]
+
+[27]
+
+[28
+
+
+]
+Chapter 4
+Package acronym Info: Label `acro:MAE' newly defined as it shall be overridden
+although it is yet undefined on input line 1032.
+Package acronym Info: Label `acro:RMSE' newly defined as it shall be overridden
+although it is yet undefined on input line 1032.
+Package acronym Info: Label `acro:MAPE' overridden on input line 1032.
+Package acronym Info: Label `acro:sMAPE' newly defined as it shall be overridden
+although it is yet undefined on input line 1032.
+
+Underfull \vbox (badness 1902) has occurred while \output is active []
+
+
+
+[29]
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1051.
+Package acronym Info: Label `acro:pp' newly defined as it shall be overridden
+although it is yet undefined on input line 1075.
+
+
+[30]
+Package acronym Info: Label `acro:SARIMA' newly defined as it shall be overridden
+although it is yet undefined on input line 1088.
+Package acronym Info: Label `acro:SARIMAX' newly defined as it shall be overridden
+although it is yet undefined on input line 1088.
+
+Overfull \hbox (15.89719pt too wide) in paragraph at lines 1088--1089
+[]\OT1/cmr/m/n/12 Statistical: [][][]Seasonal Au-tore-gres-sive In-te-grated Mov-ing Av-er-age ([])[]$(1\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1) \OMS/cmsy/m/n/12 ^^B
+ []
+
+Package acronym Info: Label `acro:NBEATS' overridden on input line 1089.
+
+
+[31]
+Package acronym Info: Label `acro:RF' newly defined as it shall be overridden
+although it is yet undefined on input line 1109.
+
+
+[32]
+
+[33]
+<images/forecast_comparison.png, id=972, 931.8012pt x 713.064pt>
+File: images/forecast_comparison.png Graphic file (type png)
+<use images/forecast_comparison.png>
+Package pdftex.def Info: images/forecast_comparison.png  used on input line 1197.
+(pdftex.def)             Requested size: 455.24411pt x 348.38165pt.
+<images/forecast_residuals.png, id=973, 932.283pt x 642.2394pt>
+File: images/forecast_residuals.png Graphic file (type png)
+<use images/forecast_residuals.png>
+Package pdftex.def Info: images/forecast_residuals.png  used on input line 1204.
+(pdftex.def)             Requested size: 455.24411pt x 313.62209pt.
+
+
+[34]
+
+[35 <./images/forecast_comparison.png>]
+
+[36 <./images/forecast_residuals.png>]
+
+[37
+
+]
+
+[38]
+
+[39]
+
+[40]
+Chapter 5
+
+Overfull \hbox (7.50525pt too wide) in paragraph at lines 1355--1356
+\OT1/cmr/m/n/12 bined a population-level anal-y-sis of sea-sonal, trend, and resid-ual struc-ture with a prediction-
+ []
+
+
+
+[41
+
+
+]
+
+[42]
+
+[43]
+
+[44
+
+
+]
+References
+
+
+[45]
+
+[46]
+
+[47] (Theses.aux)
+ ***********
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-03-26>
+ ***********
+Package rerunfilecheck Info: File `Theses.out' has not changed.
+(rerunfilecheck)             Checksum: 6C3D6289F71070CCBA45F18981576D13;11024.
+Package logreq Info: Writing requests to 'Theses.run.xml'.
+\openout1 = `Theses.run.xml'.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 26450 strings out of 469959
+ 462161 string characters out of 5469835
+ 1314275 words of memory out of 5000000
+ 52495 multiletter control sequences out of 15000+600000
+ 640412 words of font info for 82 fonts, out of 8000000 for 9000
+ 1306 hyphenation exceptions out of 8191
+ 71i,12n,117p,2118b,2316s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/GONCA/AppData/Local/Programs/MiKTeX/fonts/type1/public/montserrat/Montserrat-Regular.pfb><C:/Users/GONCA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/GONCA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/GONCA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/GONCA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/GONCA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/GONCA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/GONCA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/GONCA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/GONCA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/GONCA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/GONCA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/GONCA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/GONCA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/GONCA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on Theses.pdf (67 pages, 2048347 bytes).
+PDF statistics:
+ 1281 PDF objects out of 1440 (max. 8388607)
+ 248 named destinations out of 1000 (max. 500000)
+ 524 words of extra memory for PDF output out of 10000 (max. 10000000)
+

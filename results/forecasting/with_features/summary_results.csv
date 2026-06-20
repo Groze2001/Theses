@@ -1,0 +1,4 @@
+municipality,Best model,Best RMSE,Best baseline,Baseline RMSE,Improvement vs baseline (%)
+Vitoria-Gasteiz,N-BEATS v2 (covariate-conditioned),0.02067649290808216,Seasonal Naive (365d),0.045032775491820325,54.08567941401302
+Donostia/San Sebastian,SARIMAX,0.014964397287879553,Seasonal Naive (365d),0.05234064293633352,71.40960361132352
+Pamplona/Iruna,Random Forest Features,0.013858091815703643,Seasonal Naive (365d),0.047294562065638236,70.69833991385617

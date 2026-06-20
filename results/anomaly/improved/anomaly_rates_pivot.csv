@@ -1,0 +1,19 @@
+city,method,pre-COVID,in-COVID,post-COVID,ALL
+Donostia/San Sebastian,Ensemble,,,1.36,1.36
+Donostia/San Sebastian,IForest,,,2.38,2.38
+Donostia/San Sebastian,K-Means,,,26.53,26.53
+Donostia/San Sebastian,LOF,,,2.38,2.38
+Donostia/San Sebastian,OC-SVM,,,9.86,9.86
+Donostia/San Sebastian,Z-score,,,0.0,0.0
+Pamplona/Iruna,Ensemble,,,0.72,0.72
+Pamplona/Iruna,IForest,,,1.09,1.09
+Pamplona/Iruna,K-Means,,,26.45,26.45
+Pamplona/Iruna,LOF,,,1.09,1.09
+Pamplona/Iruna,OC-SVM,,,10.51,10.51
+Pamplona/Iruna,Z-score,,,0.36,0.36
+Vitoria-Gasteiz,Ensemble,,,1.01,1.01
+Vitoria-Gasteiz,IForest,,,2.36,2.36
+Vitoria-Gasteiz,K-Means,,,24.24,24.24
+Vitoria-Gasteiz,LOF,,,2.36,2.36
+Vitoria-Gasteiz,OC-SVM,,,8.42,8.42
+Vitoria-Gasteiz,Z-score,,,0.0,0.0

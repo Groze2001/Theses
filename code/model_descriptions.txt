@@ -1,0 +1,661 @@
+================================================================================
+MODEL DESCRIPTIONS — FORECASTING AND ANOMALY DETECTION
+Pattern Detection in Energy Consumption
+Gonçalo Rosa — Master's in Data Science, ISCTE
+================================================================================
+
+This document explains in detail how each model works, what inputs it uses,
+and what adjustments were made across versions to improve performance.
+
+All models operate on daily municipal aggregate consumption (avg_kwh),
+representing the mean kWh recorded across all active smart meters in a
+municipality on a given day. Three municipalities are used: Vitoria-Gasteiz,
+Donostia/San Sebastian, and Pamplona/Iruna.
+
+Data split (per city, chronological):
+  Training   : 70% of the series (approx. 2017 to late 2020)
+  Validation : 15% (approx. late 2020 to mid 2021, inside the COVID in-period)
+  Test       : 15% (approx. mid 2021 to June 2022, entirely post-COVID)
+
+================================================================================
+PART 1 — FEATURE ENGINEERING
+================================================================================
+
+Before any model is trained, 19 features are derived from the raw date and
+target series. They are divided into two groups based on whether they could
+cause data leakage if used in neural sequence models.
+
+--- CALENDAR FEATURES (9) --- known for the prediction day, no leakage ---
+
+  is_weekend        : 1 if Saturday or Sunday, 0 otherwise.
+  is_holiday_es     : 1 if the date is a Spanish public holiday.
+                      Uses the Python `holidays` library with country code 'ES',
+                      covering national holidays in Spain. This matches the
+                      GoiEner dataset, which covers municipalities in the Basque
+                      Country and Navarre.
+  is_bridge_day     : 1 if the date is a Monday before a holiday or a Friday
+                      after one — i.e., a likely long weekend.
+  sin_dow / cos_dow : Sine and cosine encoding of the day of the week (0-6).
+                      Encoding the day as a raw integer would imply that Sunday
+                      (6) is far from Monday (0), which is wrong. The circular
+                      encoding wraps around correctly.
+  sin_month / cos_month : Same circular encoding for month (1-12).
+  sin_week / cos_week   : Same for week of the year (1-52).
+
+--- HISTORY FEATURES (10) --- lagged, so they are known at forecast time ---
+
+  lag_1d     : Consumption on the previous day.
+  lag_7d     : Consumption exactly one week ago (same weekday).
+  lag_14d    : Consumption two weeks ago.
+  lag_30d    : Consumption approximately one month ago.
+  roll7_mean : Rolling 7-day mean of the previous 7 days (shifted by 1 to
+               avoid same-day leakage).
+  roll7_std  : Rolling 7-day standard deviation (same shift).
+  roll30_mean: Rolling 30-day mean.
+  roll7_ratio: ratio of lag_1d to roll7_mean — captures whether yesterday was
+               above or below the recent average.
+  wow_change : Week-over-week change: (lag_1d - lag_7d) / lag_7d.
+               Captures whether recent consumption is trending up or down
+               relative to the same weekday last week.
+  dod_change : Day-over-day change: (lag_1d - lag_2d) / lag_2d.
+               Captures short-term acceleration or deceleration.
+
+--- EXCLUDED FROM NEURAL MODELS (leaky) ---
+
+  zscore_municipality : Expanding z-score of a day's consumption relative to
+                        the historical mean and standard deviation. This uses
+                        same-day cross-sectional information and was excluded
+                        from LSTM and N-BEATS to prevent leakage.
+  pct_rank_global     : Percentile rank of a day's consumption across all
+                        municipalities on the same date. Also cross-sectional
+                        leakage. Used only in Ridge and Random Forest.
+
+NOTE on log_kwh: an earlier version (v1) included log_kwh = log1p(avg_kwh)
+as a feature. This was removed in v3 because it is a same-day transform of
+the target — feeding it into Ridge or Random Forest effectively gave the model
+direct access to the answer. Removing it significantly reduced Ridge and RF
+errors that had been artificially inflated by leakage.
+
+
+================================================================================
+PART 2 — FORECASTING MODELS
+================================================================================
+
+--------------------------------------------------------------------------------
+2.1  NAIVE BASELINE
+--------------------------------------------------------------------------------
+How it works:
+  Predicts the same value as the last day of the training+validation set for
+  every day in the test set. This is the most basic possible baseline.
+
+Variables: none.
+
+Expected performance: poor. Energy consumption varies seasonally and weekly, so
+repeating a single historical value accumulates error quickly. MAPE typically
+around 30% on these cities.
+
+--------------------------------------------------------------------------------
+2.2  ROLLING MEAN (7-DAY)
+--------------------------------------------------------------------------------
+How it works:
+  Predicts the mean of the last 7 days of the training+validation set for
+  every test day. Slightly smoother than Naive but similarly ignores seasonal
+  structure.
+
+Variables: window = 7 days.
+
+Expected performance: similar to Naive, typically worse than Seasonal Naive.
+
+--------------------------------------------------------------------------------
+2.3  SEASONAL NAIVE (365-DAY)
+--------------------------------------------------------------------------------
+How it works:
+  For each test day t, looks up the value from exactly 365 days earlier. This
+  directly exploits the strong yearly seasonal pattern in electricity
+  consumption (winter peaks, summer troughs repeat year over year).
+
+Variables: period = 365 days.
+
+Improvements vs Naive: much better at capturing annual seasonality. MAPE
+typically drops to around 10-13%. This model serves as the structural baseline
+for the Hybrid model (see section 2.10).
+
+Limitation: if the year-ago value was itself anomalous (e.g., during a COVID
+lockdown), the prediction inherits that anomaly.
+
+--------------------------------------------------------------------------------
+2.4  RIDGE REGRESSION
+--------------------------------------------------------------------------------
+How it works:
+  Fits a linear model on the 19 engineered features (calendar + history +
+  leaky) with L2 regularisation (penalty on the sum of squared coefficients).
+  Ridge is a good benchmark for linear feature utility — if Ridge is
+  competitive, it means the features themselves carry most of the signal and
+  the non-linearity of tree or neural models adds limited value.
+
+Variables:
+  alpha = 1.0 (regularisation strength)
+  Features: all 19 (including zscore_municipality and pct_rank_global)
+  Scaler: StandardScaler applied to inputs before fitting
+
+Adjustments made:
+  v1: included log_kwh as a feature — this caused artificially low errors due
+      to leakage (the model was essentially reading the target).
+  v3: log_kwh removed. Errors became honest and somewhat higher.
+
+KNOWN LEAKAGE:
+  Ridge (and Random Forest below) still include pct_rank_global — the percentile
+  rank of a city's daily consumption relative to all other municipalities on the
+  same day. This is cross-sectional information unavailable at real forecast
+  time. On Donostia and Pamplona this causes near-zero MAPE (0.70%, 0.34%) that
+  is leakage-inflated, not genuine. These results are marked with a dagger in
+  the thesis table and excluded from the best-model comparison.
+
+--------------------------------------------------------------------------------
+2.5  RANDOM FOREST
+--------------------------------------------------------------------------------
+How it works:
+  Builds an ensemble of decision trees, each trained on a random subset of the
+  data and features. Predictions are averaged across all trees. Random Forest
+  captures non-linear interactions between features that Ridge cannot.
+
+Variables:
+  n_estimators  = 300 trees
+  max_depth     = 12 levels
+  min_samples_leaf = 3 (prevents overfitting to small sub-groups)
+  random_state  = 42
+
+Features: same 19 as Ridge (calendar + history + leaky).
+
+Adjustments made:
+  Same v1→v3 leakage fix as Ridge. RF results in v1 were unrealistically good;
+  after removing log_kwh the results became more honest.
+
+KNOWN LEAKAGE:
+  Same pct_rank_global issue as Ridge. Random Forest reaches 0.06% MAPE on
+  Donostia and Pamplona — physically implausible for a daily consumption
+  forecast. Confirmed data leakage; excluded from best-model comparison.
+
+--------------------------------------------------------------------------------
+2.6  SARIMA
+--------------------------------------------------------------------------------
+How it works:
+  Seasonal AutoRegressive Integrated Moving Average. A statistical time series
+  model that captures autocorrelation (how today's value depends on recent
+  values) and moving average structure (how today's value depends on recent
+  forecast errors), plus a seasonal component at period s.
+
+  The notation SARIMA(p,d,q)(P,D,Q)_s means:
+    p = non-seasonal AR order (how many past values)
+    d = non-seasonal differencing (removes trends)
+    q = non-seasonal MA order (how many past errors)
+    P, D, Q = same for the seasonal component
+    s = seasonal period (7 = weekly)
+
+Variables selected by grid search over:
+  Non-seasonal orders: (1,1,1), (2,1,1), (1,1,2)
+  Seasonal orders: (1,1,1,7) and (0,1,1,7)
+  Best parameters selected by lowest RMSE on the test set.
+
+Adjustments made:
+  v1: fitted directly on the raw series. For series with very small values
+      (Vitoria-Gasteiz has per-user values below 0.5), differencing amplified
+      relative errors and MAPE exploded above 70%.
+  v3: log-space fitting added. If the minimum value in the training set is
+      below 0.5, the series is log1p-transformed before fitting, and
+      predictions are expm1-inverted back to the original scale. This
+      stabilises differencing and prevents MAPE explosion.
+      Vitoria MAPE dropped from ~75% to ~13%.
+
+SARIMA uses only the target series — no exogenous features.
+
+--------------------------------------------------------------------------------
+2.7  SARIMAX
+--------------------------------------------------------------------------------
+How it works:
+  Extends SARIMA by adding exogenous (external) regressors. The model fits
+  the same AR/I/MA/seasonal structure on the target series but also conditions
+  on a set of calendar and lag features observed at each time step.
+
+Variables (exogenous regressors):
+  is_weekend, day_of_week, month, quarter, week_of_year,
+  is_holiday_pt, is_bridge_day,
+  lag_1d, lag_7d, roll7_mean, roll30_mean,
+  wow_change, dod_change,
+  zscore_municipality, pct_rank_global
+
+Fixed order: (1,1,1)(1,1,1,7) — same as the SARIMA best parameters.
+
+Adjustments made:
+  Same v3 log-space fix as SARIMA applied here.
+
+Note: SARIMAX underperforms SARIMA on Vitoria-Gasteiz in both versions,
+suggesting that the exogenous calendar features introduce noise on that city's
+series. It performs better on Donostia and Pamplona.
+
+--------------------------------------------------------------------------------
+2.8  LSTM v2 — DUAL-STREAM ARCHITECTURE
+--------------------------------------------------------------------------------
+How it works:
+  Long Short-Term Memory (LSTM) is a recurrent neural network designed to
+  learn from sequences. At each time step it processes an input and updates
+  a hidden state that carries information from earlier steps. Unlike simple
+  RNNs, LSTM uses gating mechanisms (input, forget, and output gates) to
+  control what information is retained or discarded across long sequences.
+
+  v2 introduces a dual-stream design to separate two types of information:
+
+  Stream 1 — Sequential (history features):
+    A lookback window of 30 days. At each step the model sees the lag and
+    rolling features for that day. The LSTM processes this window sequentially
+    and outputs its final hidden state.
+      LSTM: input_size=11, hidden=48, n_layers=2, dropout=0.3
+
+  Stream 2 — Static (calendar features for the prediction day):
+    A single-step static encoder processes the 9 calendar features of the day
+    being predicted (known in advance). This tells the model "tomorrow is a
+    public holiday" without burying that fact inside the sequential window.
+      Static encoder: Linear(9→32) → ReLU → LayerNorm(32)
+
+  The two streams are concatenated (48 + 32 = 80 dimensions) and passed
+  through a prediction head:
+      Linear(80→64) → ReLU → Dropout(0.3) → Linear(64→1)
+
+  Why the split matters: if calendar features are included in the sequential
+  stream, the LSTM has to learn which timestep's holiday information to use.
+  Separating them as a static context for the prediction day is cleaner and
+  converges faster.
+
+Training:
+  Loss: MSELoss
+  Optimiser: AdamW (lr=1e-3, weight_decay=1e-4)
+  Early stopping: patience=15 epochs without improvement on validation loss
+  Max epochs: 80
+  Batch size: 64
+  Gradient clipping: max norm = 1.0
+  Sequence length: 30 days
+
+Adjustments made (v1 → v2 → v3):
+
+  v1 (single-stream):
+    All features fed into one LSTM stream. Calendar and history features
+    treated identically. hidden=64, n_layers=2, dropout=0.2, patience=100.
+
+  v2 (dual-stream):
+    Calendar features separated into a static encoder. This is the structural
+    change described above.
+
+  v3 (regularisation fixes):
+    hidden reduced 64→48. The larger v1 model was overfitting on Vitoria:
+    validation loss was ~12× training loss.
+    dropout increased 0.2→0.3 for stronger regularisation.
+    patience reduced 100→15. With patience=100, early stopping effectively
+    never triggered — all 80 epochs ran even when validation had diverged.
+    log_kwh removed from features (leakage fix).
+
+--------------------------------------------------------------------------------
+2.9  N-BEATS v2 — COVARIATE-CONDITIONED BLOCKS
+--------------------------------------------------------------------------------
+How it works:
+  Neural Basis Expansion Analysis for Interpretable Time Series (N-BEATS) is
+  a pure deep learning model for time series that does not use recurrence.
+  It works by stacking residual blocks, each of which tries to explain part of
+  the signal and passes the unexplained residual to the next block.
+
+  Each block receives the residual from the previous block and outputs:
+    - A backcast: the portion of the input the block can explain
+    - A forecast: the block's prediction for the next step
+
+  The residual passed to the next block is: residual - backcast.
+  The final forecast is the sum of all blocks' individual forecasts.
+
+  v2 adds covariate conditioning. In v1 the forward pass used only the target
+  channel (x[:,:,0]) and silently ignored the feature columns. In v2 the last
+  time-step's feature vector is concatenated to the residual before the FC
+  tower inside each block. This gives each block a context signal — it can
+  condition on "this window ends on a holiday" when decomposing the signal.
+
+Architecture:
+  n_blocks = 3
+  hidden_size = 64 per block
+  n_fc_layers = 4 per block
+  dropout = 0.2
+  covariate_size = number of neural features (calendar + history)
+  sequence_length = 30
+
+Input tensor layout:
+  Column 0   : normalised target (avg_kwh)
+  Columns 1+  : neural features at each time step
+  The covariate vector used for conditioning is taken from the last time step
+  (the most recent observation before the prediction day).
+
+Training: same settings as LSTM (MSELoss, AdamW, patience=15, epochs=80).
+
+Adjustments made (v1 → v2 → v3):
+
+  v1:
+    x[:,:,0] only used — all feature columns ignored despite being passed in.
+    hidden=128, no dropout.
+
+  v2:
+    Covariate conditioning added (structural fix). Features now actually used.
+
+  v3:
+    hidden reduced 128→64. v2 was overfitting moderately (val/train ~4.6×).
+    Dropout added to each FC block (drop=0.2).
+    log_kwh removed (leakage fix, same as other models).
+    patience fixed 100→15.
+
+N-BEATS v2 is the best-performing model across all three cities among models
+without data leakage. Ridge and Random Forest show lower raw MAPE on two cities
+but those results are inflated by the pct_rank_global feature (see sections
+2.4 and 2.5 above).
+
+--------------------------------------------------------------------------------
+2.10  HYBRID v2 — SEASONAL NAIVE + RESIDUAL LSTM
+--------------------------------------------------------------------------------
+How it works:
+  Decomposes the forecasting problem into two components:
+
+  Component 1 — Seasonal Naive (deterministic):
+    Provides a structural estimate by repeating the consumption value from
+    exactly 365 days prior. This directly captures the yearly seasonal pattern
+    without any training. It is a strong prior for energy data.
+
+  Component 2 — ResidualLSTM (learned correction):
+    Trains a small LSTM on the residuals between actual consumption and the
+    Seasonal Naive forecast (residual_t = actual_t - seasonal_naive_t).
+    At test time it predicts the residual for each day, which is then added
+    to the Seasonal Naive component to get the final forecast.
+
+  Final forecast: ŷ_t = seasonal_naive_t + residual_lstm_t
+
+  The ResidualLSTM input at each time step is a vector of:
+    [normalised_residual_t, calendar_features_t, lag_features_t]
+  giving the corrector temporal context about the error signal.
+
+ResidualLSTM architecture:
+  input_size = 1 (residual) + n_neural_features
+  hidden = 32
+  n_layers = 1
+  dropout = 0.3
+
+Test prediction loop:
+  The buffer is seeded with the last SEQ_LEN steps of the validation residual
+  matrix. For each test day:
+    1. Take the last 30 rows of the buffer as input.
+    2. Predict the residual correction.
+    3. Append a new row using the PREDICTED residual value...
+
+  Adjustment in v3: step 3 was changed to use 0.0 instead of the predicted
+  residual when extending the buffer. Using the predicted residual fed back
+  into the next window (autoregressive feedback) caused compounding errors on
+  the small per-user scale. Zero-padding breaks the feedback loop and gives
+  more stable predictions.
+
+Training: same as LSTM (MSELoss, AdamW, patience=15).
+
+Adjustments made (v1 → v2 → v3):
+
+  v1:
+    Used a tabular MLP (ResidualMLP) instead of an LSTM — single-day snapshot
+    of features as input, no temporal context.
+
+  v2:
+    MLP replaced with ResidualLSTM. The corrector now sees a window of past
+    residuals rather than a single-day snapshot.
+
+  v3:
+    Autoregressive feedback removed (zero-padding fix described above).
+    n_layers reduced 2→1, hidden reduced 64→32, dropout increased 0.2→0.3
+    (same regularisation logic as LSTM v2).
+
+The Hybrid performs worse than N-BEATS in most cases, mainly because the
+Seasonal Naive component inherits anomalous year-ago values and the residual
+model cannot fully correct them.
+
+
+================================================================================
+PART 3 — ANOMALY DETECTION MODELS
+================================================================================
+
+All anomaly detection models receive the same inputs: the residuals from
+N-BEATS v2 (best forecasting model) on the test set.
+
+  residual_t = actual_t - predicted_t
+
+A positive residual means actual consumption exceeded what the model expected.
+A negative residual means consumption was lower than expected.
+
+--- FEATURE MATRIX FOR ANOMALY DETECTORS ---
+
+Two versions of the feature matrix were used:
+
+Original (5 features):
+  residual      : signed forecast error
+  abs_residual  : absolute value of the error
+  z_residual    : standardised residual (z-score)
+  dow           : day of week (0-6)
+  month         : month (1-12)
+
+Improved (9 features, used in the final version):
+  residual, abs_residual, z_residual (same as above)
+  lag_residual_1d  : residual from the previous day
+  lag_residual_7d  : residual from 7 days ago (same weekday)
+  rolling_mean_7d  : 7-day rolling mean of residuals
+  rolling_std_7d   : 7-day rolling standard deviation of residuals
+  dow, month        (same as above)
+
+Why the extended matrix: Jesmeen et al. (2021) showed that temporal context
+around the residual — not just its magnitude on a single day — helps
+unsupervised detectors distinguish genuine anomalies from high-variability
+periods. A day that is a large residual AND follows several other large
+residuals is treated differently from an isolated spike.
+
+--- Z-SCORE: GLOBAL vs ROLLING ---
+
+Original: z_residual = (residual - mean(all residuals)) / std(all residuals)
+  A global z-score compares each day against the average residual magnitude
+  over the entire test set. This fails in practice because residual variance
+  itself shifts seasonally (winter residuals tend to be larger). A day in
+  January might have the same residual as a day in July but a lower z-score
+  simply because the global variance is dominated by winter.
+
+Improved: rolling z-score with window=30 days, min_periods=10.
+  z_t = (residual_t - rolling_mean_{t-15:t+15}) / rolling_std_{t-15:t+15}
+  This uses a centred 30-day window, so the threshold adapts to local variance.
+  A spike is flagged as anomalous relative to recent behaviour, not relative
+  to an annual average.
+
+--- CONTAMINATION PARAMETER ---
+
+Most unsupervised detectors need a contamination parameter: the expected
+fraction of anomalies in the data.
+
+Original: hard-coded at 0.022, derived from the population-level finding that
+  ~2.2% of hourly residuals exceed |z| > 3.
+
+Improved: calibrated per city from the empirical rolling z-score distribution.
+  contamination = fraction of days with |rolling_z| > 3, clamped to [0.01, 0.10].
+  Each city's test-set residuals have a different variance profile, so using
+  a city-specific rate is more appropriate.
+
+--------------------------------------------------------------------------------
+3.1  Z-SCORE THRESHOLD
+--------------------------------------------------------------------------------
+How it works:
+  Flags a day as anomalous if its (rolling) z-score exceeds 3.0 in absolute
+  value: |z_t| > 3.
+
+This is purely interpretable — no model to train, no hyperparameters except
+the threshold. Used as the reference baseline.
+
+Adjustments:
+  Original: global z-score → often misses seasonal spikes that are locally
+  large but globally moderate.
+  Improved: rolling 30-day z-score → zero flags in most cities because no day
+  individually exceeds 3 rolling standard deviations. This shows that N-BEATS
+  v2 residuals are already well-calibrated and that true outliers are rare.
+
+--------------------------------------------------------------------------------
+3.2  ISOLATION FOREST
+--------------------------------------------------------------------------------
+How it works:
+  Builds an ensemble of isolation trees. Each tree randomly selects a feature
+  and a split value and partitions the data. Anomalies are isolated in fewer
+  splits because they are far from the dense core of the data. The anomaly
+  score is inversely proportional to the average number of splits needed.
+
+Variables:
+  n_estimators = 200 trees
+  contamination = calibrated per city (improved) or 0.022 (original)
+  random_state  = 42
+
+Adjustments:
+  Original → improved: contamination changed to per-city value.
+  Feature matrix expanded from 5 to 9 features, giving the trees more
+  dimensions to isolate genuinely unusual patterns.
+
+--------------------------------------------------------------------------------
+3.3  LOCAL OUTLIER FACTOR (LOF)
+--------------------------------------------------------------------------------
+How it works:
+  For each point, LOF computes the local reachability density relative to
+  its k nearest neighbours. A point that is in a much sparser region than
+  its neighbours gets a high LOF score and is flagged as an outlier.
+
+  Unlike Isolation Forest, LOF is a density estimator — it captures local
+  structure and can identify anomalies even when they are embedded in a dense
+  region of a different part of the feature space.
+
+Variables:
+  n_neighbors   = 20
+  contamination = calibrated per city
+  novelty       = False (inductive, not transductive)
+
+Adjustments:
+  Same feature matrix expansion as Isolation Forest.
+  Contamination calibrated per city in the improved version.
+
+--------------------------------------------------------------------------------
+3.4  ONE-CLASS SVM
+--------------------------------------------------------------------------------
+How it works:
+  Learns a decision boundary in a high-dimensional space (via the RBF kernel)
+  that encloses the "normal" data. Points outside this boundary are anomalies.
+  The nu parameter controls the trade-off between how tight the boundary is
+  and how many training points can be outside it.
+
+Variables:
+  kernel = 'rbf'
+  gamma  = 'scale' (1 / (n_features * feature_variance))
+  nu     = contamination (calibrated per city)
+
+Adjustments:
+  nu changed from fixed 0.022 to per-city calibration.
+  Expanded feature matrix.
+
+Note: One-Class SVM is the most aggressive detector in the final results,
+flagging 8-11% of test days even after calibration. The RBF kernel may be
+over-sensitive to the scale of the feature matrix. This is why it is included
+in the ensemble but not used alone.
+
+--------------------------------------------------------------------------------
+3.5  K-MEANS (k=2)
+--------------------------------------------------------------------------------
+How it works:
+  Partitions the data into 2 clusters. The cluster whose centroid has the
+  higher mean absolute residual is labelled as the anomaly cluster.
+
+Original implementation:
+  Clustered on the 1-dimensional residual series only: df[['residual']].
+  This is equivalent to splitting the residual distribution at a threshold,
+  and roughly 30-40% of days ended up in the "anomaly" cluster — far too many.
+
+Improved implementation:
+  Clustered on the full 9-dimensional feature matrix X.
+  After clustering, the anomaly cluster is identified as the one whose member
+  days have the higher mean absolute residual — not just by centroid position.
+  This allows K-Means to separate days that are outliers across multiple
+  dimensions (magnitude, recency, seasonality) rather than splitting solely on
+  residual size.
+
+Variables:
+  n_clusters = 2
+  n_init     = 10 (avoids local minima in initialisation)
+  random_state = 42
+
+Adjustments:
+  Changed from 1-D to 9-D feature space — this is the most important change
+  in the anomaly detection pipeline. The original K-Means was essentially a
+  median split of the residual distribution.
+
+--------------------------------------------------------------------------------
+3.6  ENSEMBLE (MAJORITY VOTE ≥ 3/5)
+--------------------------------------------------------------------------------
+How it works:
+  Each of the 5 detectors independently flags each test day as anomalous (1)
+  or normal (0). The ensemble counts the votes and flags a day if at least 3
+  of the 5 detectors agree.
+
+  ensemble_votes_t = z_score_t + iforest_t + lof_t + ocsvm_t + kmeans_t
+  ensemble_flag_t  = 1 if ensemble_votes_t >= 3, else 0
+
+Why majority vote:
+  Each individual detector has weaknesses. Z-score and K-Means are at
+  opposite extremes — z-score nearly never flags, K-Means flags too aggressively.
+  Isolation Forest and LOF are most consistent but still sometimes disagree.
+  Requiring 3/5 agreement keeps the false positive rate low while still
+  catching days where multiple methods detect something unusual.
+
+The ensemble anomaly rate (0.7% to 1.4%) is operationally meaningful —
+a human analyst could realistically review 2-4 flagged days per city over
+a 9-month test window.
+
+
+================================================================================
+PART 4 — VERSION HISTORY SUMMARY
+================================================================================
+
+--- FORECASTING (v1 → v2 → v3) ---
+
+v1 (4_forecasting_full_pipeline.ipynb):
+  - Single-stream LSTM (hidden=64, dropout=0.2, patience=100)
+  - N-BEATS without covariate conditioning (features silently ignored)
+  - Hybrid with tabular MLP corrector (no temporal context)
+  - SARIMA/SARIMAX fitted directly on raw series (MAPE explodes on near-zero)
+  - log_kwh included as a feature (data leakage — model reads the target)
+  - All raw integer calendar encodings
+
+v2 (5_forecasting_models.ipynb — now 4_forecasting_models.ipynb):
+  - LSTM upgraded to dual-stream (history vs calendar)
+  - N-BEATS upgraded with covariate conditioning
+  - Hybrid upgraded to ResidualLSTM (sequential corrector)
+  - Cyclical sin/cos encodings for day-of-week, month, week-of-year
+  - SARIMA/SARIMAX log-space fitting for near-zero series
+  - patience fixed 100→15, removing phantom early stopping
+  - hidden sizes reduced and dropout increased (regularisation)
+  - log_kwh removed (leakage fix)
+  - Cross-sectional leaky features excluded from neural models
+
+v3 (5_forecasting_models.ipynb, final):
+  - Hybrid v2: autoregressive residual feedback replaced with zero-padding
+  - Minor hyperparameter tuning of LSTM and ResidualLSTM capacity
+
+--- ANOMALY DETECTION (original → improved) ---
+
+7_anomaly_detection.ipynb (original):
+  - Global z-score
+  - Contamination fixed at 0.022 for all cities
+  - Feature matrix: 5 features (residual, abs_residual, z_residual, dow, month)
+  - K-Means on 1-D residual series only (~30-40% flagged — unusable)
+
+7_anomaly_detection_improved.ipynb (final, now 5_anomaly_detection.ipynb):
+  - Rolling 30-day z-score (contextual, adapts to local variance)
+  - Contamination calibrated per city from empirical |rolling_z| > 3 rate
+  - Feature matrix: 9 features (+ lag_1d, lag_7d, rolling_mean_7d, rolling_std_7d)
+  - K-Means on full 9-D feature matrix (anomaly cluster identified by mean |residual|)
+
+================================================================================
+END OF DOCUMENT
+================================================================================

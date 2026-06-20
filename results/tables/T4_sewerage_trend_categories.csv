@@ -1,0 +1,10 @@
+,Group,Category,N,%,N total
+0,in,Increasing,0,0.0,1
+1,in,Stable,1,100.0,1
+2,in,Decreasing,0,0.0,1
+3,post,Increasing,0,0.0,1
+4,post,Stable,0,0.0,1
+5,post,Decreasing,1,100.0,1
+6,pre,Increasing,0,0.0,1
+7,pre,Stable,0,0.0,1
+8,pre,Decreasing,1,100.0,1

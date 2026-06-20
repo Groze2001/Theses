@@ -1,0 +1,4 @@
+Municipality,Best Overall,Best Overall RMSE,Best Baseline,Baseline RMSE,Best NN,NN RMSE,Improvement vs Baseline (%)
+Vitoria-Gasteiz,TCN,0.0506,Rolling Mean (7d),0.0716,TCN,0.0506,29.329608938547487
+Donostia/San Sebastian,Rolling Mean (7d),0.0677,Rolling Mean (7d),0.0677,LSTM,0.0953,0.0
+Pamplona/Iruna,TCN,0.0496,Rolling Mean (7d),0.0565,TCN,0.0496,12.212389380530979

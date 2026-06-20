@@ -1,0 +1,23 @@
+\babel@toc {english}{}\relax 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Distribution of active tariff periods across the dataset.}}{15}{figure.caption.31}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Distribution of length years by number of active periods.}}{15}{figure.caption.32}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Distribution of daily seasonal strength ($F_s$) across all users for the pre-, in-, and post-COVID periods. The in-period distribution shifts visibly to the right, reflecting more structured daily routines during lockdown.}}{19}{figure.caption.37}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Distribution of users across \ac {CNAE} sectors. Household production accounts for the vast majority, while all commercial and industrial categories are substantially smaller.}}{20}{figure.caption.39}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Daily seasonal strength distributions for the Household production sector, separated by COVID period. The in-period shift toward higher $F_s$ values is clearly visible compared to pre and post.}}{21}{figure.caption.40}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Daily seasonal strength distributions for the Public Administration sector, separated by COVID period. Most buildings cluster near $F_s = 1.0$, while a minority show very low seasonality.}}{22}{figure.caption.41}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Distribution of annualised trend slopes across users, by period. The in-period tail is the heaviest (skewness = 13.46), driven by a small number of users with extreme slope values during lockdown.}}{23}{figure.caption.42}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Trend slope against daily seasonal strength per user and period. No consistent relationship appears between the two — users with strong seasonal regularity are spread across the full range of trend directions, confirming that the two components vary independently.}}{24}{figure.caption.44}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Distribution of the proportion of extreme residual events across users.}}{25}{figure.caption.46}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Distribution of the density of extreme residual events across users.}}{26}{figure.caption.47}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Test-set forecast comparison for all three municipalities. Each panel shows the actual daily average consumption (black) against the best model (red), Seasonal Naive (365d), and Hybrid~v2. The test window spans August 2021 -- June 2022.}}{35}{figure.caption.61}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces \ac {NBEATS}~v2 forecast residuals over the test period for all three municipalities. Red bars indicate days where actual consumption exceeded the forecast (positive residual); blue bars indicate days where the model over-predicted. Dashed vertical lines mark the days flagged by the ensemble anomaly detector.}}{36}{figure.caption.62}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }

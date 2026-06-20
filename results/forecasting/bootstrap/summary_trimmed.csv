@@ -1,0 +1,13 @@
+city,model,n_runs,n_kept,MAPE_mean,MAPE_std,MAPE_min,MAPE_max,MAE_mean,RMSE_mean
+Donostia/San Sebastian,Random Forest,100,90,3.276,0.014,3.246,3.309,0.0129,0.019
+Donostia/San Sebastian,N-BEATS v2,100,90,3.706,0.081,3.568,3.881,0.0144,0.0194
+Donostia/San Sebastian,Ridge,100,90,3.729,0.0,3.729,3.729,0.0145,0.02
+Donostia/San Sebastian,LSTM v2,100,90,5.28,0.14,5.028,5.558,0.0209,0.0283
+Pamplona/Iruna,Random Forest,100,90,4.647,0.023,4.603,4.69,0.0164,0.0227
+Pamplona/Iruna,Ridge,100,90,4.713,0.0,4.713,4.713,0.0167,0.0221
+Pamplona/Iruna,N-BEATS v2,100,90,4.937,0.122,4.71,5.182,0.0175,0.0235
+Pamplona/Iruna,LSTM v2,100,90,5.91,0.139,5.694,6.226,0.021,0.0271
+Vitoria-Gasteiz,N-BEATS v2,100,90,5.197,0.159,4.974,5.611,0.015,0.0204
+Vitoria-Gasteiz,Random Forest,100,90,5.417,0.023,5.37,5.467,0.0154,0.0215
+Vitoria-Gasteiz,Ridge,100,90,6.426,0.0,6.426,6.426,0.0187,0.0252
+Vitoria-Gasteiz,LSTM v2,100,90,8.36,0.207,7.933,8.797,0.0247,0.0312

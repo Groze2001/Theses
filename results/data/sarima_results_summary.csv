@@ -1,0 +1,4 @@
+Municipality,Best Baseline,Baseline RMSE,SARIMA params,SARIMA RMSE,Improvement (%)
+Vitoria-Gasteiz,Seasonal Naive (365d),0.0417,"(1, 0, 2)x(1, 0, 1, 7)",0.056413973053221086,-35.28530708206495
+Donostia/San Sebastian,Seasonal Naive (365d),0.048,"(3, 0, 1)x(1, 0, 1, 7)",0.06791951957849074,-41.498999121855704
+Pamplona/Iruna,Seasonal Naive (365d),0.0426,"(3, 0, 1)x(1, 0, 1, 7)",0.09281984408327984,-117.88695794197146
