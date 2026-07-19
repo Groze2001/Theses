@@ -59,6 +59,10 @@
       \z@{.5\linespacing\@plus.7\linespacing}{.25\linespacing}%
       {\normalfont\bfseries\flushleft}}
 
+% Widen the number box in the List of Figures/Tables so two-digit
+% entry numbers (e.g. 4.12) do not collide with the caption text
+\def\l@figure{\@tocline{0}{3pt plus2pt}{0pt}{2.6pc}{}}
+\let\l@table=\l@figure
 \makeatother
 \setcounter{MaxMatrixCols}{10}
 
