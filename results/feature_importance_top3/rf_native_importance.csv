@@ -1,0 +1,58 @@
+city,feature,importance
+Vitoria-Gasteiz,is_weekend,0.002258543276848061
+Vitoria-Gasteiz,is_holiday_es,0.000881144862862252
+Vitoria-Gasteiz,is_bridge_day,0.0
+Vitoria-Gasteiz,sin_dow,0.011144131222797659
+Vitoria-Gasteiz,cos_dow,0.01241353995534127
+Vitoria-Gasteiz,sin_month,0.0008694199660522333
+Vitoria-Gasteiz,cos_month,0.0010025343681329029
+Vitoria-Gasteiz,sin_week,0.004928842190038933
+Vitoria-Gasteiz,cos_week,0.005505780402251824
+Vitoria-Gasteiz,lag_1d,0.7253844725259038
+Vitoria-Gasteiz,lag_7d,0.1021275318353597
+Vitoria-Gasteiz,lag_14d,0.014150407844645649
+Vitoria-Gasteiz,lag_30d,0.0046874994138262575
+Vitoria-Gasteiz,roll7_mean,0.08560236679375234
+Vitoria-Gasteiz,roll7_std,0.009440304420123152
+Vitoria-Gasteiz,roll30_mean,0.004530199819249294
+Vitoria-Gasteiz,roll7_ratio,0.005282993272068996
+Vitoria-Gasteiz,wow_change,0.003987175974749558
+Vitoria-Gasteiz,dod_change,0.005803111855996097
+Donostia/San Sebastian,is_weekend,0.000755388003069156
+Donostia/San Sebastian,is_holiday_es,0.00018015523378223658
+Donostia/San Sebastian,is_bridge_day,1.205903000140263e-06
+Donostia/San Sebastian,sin_dow,0.006908306290207897
+Donostia/San Sebastian,cos_dow,0.01580303101602495
+Donostia/San Sebastian,sin_month,0.00048093205818652325
+Donostia/San Sebastian,cos_month,0.0007466986691167122
+Donostia/San Sebastian,sin_week,0.0036647236309723208
+Donostia/San Sebastian,cos_week,0.0025180281444840153
+Donostia/San Sebastian,lag_1d,0.9145679580446754
+Donostia/San Sebastian,lag_7d,0.012444136190989432
+Donostia/San Sebastian,lag_14d,0.007280435917287588
+Donostia/San Sebastian,lag_30d,0.004886133389809502
+Donostia/San Sebastian,roll7_mean,0.013203419688186238
+Donostia/San Sebastian,roll7_std,0.003992002983392656
+Donostia/San Sebastian,roll30_mean,0.0033414139203938285
+Donostia/San Sebastian,roll7_ratio,0.003057055051027821
+Donostia/San Sebastian,wow_change,0.0021415034604904447
+Donostia/San Sebastian,dod_change,0.004027472404903174
+Pamplona/Iruna,is_weekend,0.0023056848807269745
+Pamplona/Iruna,is_holiday_es,0.0026179943015733963
+Pamplona/Iruna,is_bridge_day,2.070019713871407e-06
+Pamplona/Iruna,sin_dow,0.018380946034650382
+Pamplona/Iruna,cos_dow,0.014214924653658563
+Pamplona/Iruna,sin_month,0.0009235583304269124
+Pamplona/Iruna,cos_month,0.0019514324161066087
+Pamplona/Iruna,sin_week,0.002853098747829396
+Pamplona/Iruna,cos_week,0.007127718693615164
+Pamplona/Iruna,lag_1d,0.3063550737908895
+Pamplona/Iruna,lag_7d,0.5497590596536438
+Pamplona/Iruna,lag_14d,0.017284977957376404
+Pamplona/Iruna,lag_30d,0.004952408454963283
+Pamplona/Iruna,roll7_mean,0.03656392093336566
+Pamplona/Iruna,roll7_std,0.0066627376179366725
+Pamplona/Iruna,roll30_mean,0.004829763610984639
+Pamplona/Iruna,roll7_ratio,0.009073213144489035
+Pamplona/Iruna,wow_change,0.0075661111620664275
+Pamplona/Iruna,dod_change,0.006575305595983346

@@ -1,0 +1,37 @@
+city,period,method,n_days,n_flagged,rate_%
+Vitoria-Gasteiz,train,Z-score,1269,8,0.63
+Vitoria-Gasteiz,train,IForest,1269,13,1.02
+Vitoria-Gasteiz,train,LOF,1269,13,1.02
+Vitoria-Gasteiz,train,OC-SVM,1269,13,1.02
+Vitoria-Gasteiz,train,K-Means,1269,617,48.62
+Vitoria-Gasteiz,train,Ensemble,1269,5,0.39
+Vitoria-Gasteiz,test,Z-score,279,0,0.0
+Vitoria-Gasteiz,test,IForest,279,7,2.51
+Vitoria-Gasteiz,test,LOF,279,7,2.51
+Vitoria-Gasteiz,test,OC-SVM,279,9,3.23
+Vitoria-Gasteiz,test,K-Means,279,152,54.48
+Vitoria-Gasteiz,test,Ensemble,279,4,1.43
+Donostia/San Sebastian,train,Z-score,1258,4,0.32
+Donostia/San Sebastian,train,IForest,1258,13,1.03
+Donostia/San Sebastian,train,LOF,1258,13,1.03
+Donostia/San Sebastian,train,OC-SVM,1258,14,1.11
+Donostia/San Sebastian,train,K-Means,1258,635,50.48
+Donostia/San Sebastian,train,Ensemble,1258,6,0.48
+Donostia/San Sebastian,test,Z-score,276,0,0.0
+Donostia/San Sebastian,test,IForest,276,7,2.54
+Donostia/San Sebastian,test,LOF,276,7,2.54
+Donostia/San Sebastian,test,OC-SVM,276,7,2.54
+Donostia/San Sebastian,test,K-Means,276,153,55.43
+Donostia/San Sebastian,test,Ensemble,276,2,0.72
+Pamplona/Iruna,train,Z-score,1172,7,0.6
+Pamplona/Iruna,train,IForest,1172,12,1.02
+Pamplona/Iruna,train,LOF,1172,12,1.02
+Pamplona/Iruna,train,OC-SVM,1172,12,1.02
+Pamplona/Iruna,train,K-Means,1172,634,54.1
+Pamplona/Iruna,train,Ensemble,1172,8,0.68
+Pamplona/Iruna,test,Z-score,258,1,0.39
+Pamplona/Iruna,test,IForest,258,3,1.16
+Pamplona/Iruna,test,LOF,258,3,1.16
+Pamplona/Iruna,test,OC-SVM,258,4,1.55
+Pamplona/Iruna,test,K-Means,258,154,59.69
+Pamplona/Iruna,test,Ensemble,258,2,0.78
