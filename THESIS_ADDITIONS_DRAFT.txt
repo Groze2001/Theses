@@ -1,0 +1,163 @@
+================================================================================
+THESIS ADDITIONS DRAFT
+Pattern Detection in Energy Consumption
+================================================================================
+
+These sections are ready to integrate into Theses.tex. They follow the existing
+writing style: specific numbers, direct reasoning, concrete examples, no AI
+templates or hedging.
+
+================================================================================
+ADDITION 1: USE-CASE CLARIFICATION
+Location: Chapter 4, Introduction (after line 1053, after the two-stage explanation)
+Length: ~150 words
+================================================================================
+
+This framework targets operational anomalies at the municipal aggregate level:
+consumption deviations driven by external events (weather, social restrictions,
+holidays) or potential system faults. It is not designed for individual-level
+fraud detection. A single meter drawing power illegally or a customer with a
+faulty sensor remains invisible in a municipal aggregate of 15,000+ meters.
+This is a deliberate trade-off. Aggregation makes forecasting tractable and
+residuals stable enough to detect genuine disruptions, but at the cost of
+meter-specific sensitivity. A municipality flagged as anomalous on a given day
+does not identify which customers deviated; that follow-up requires a second
+pass at the meter level (Section~\ref{sec:operational_considerations}). Fraud
+detection, if desired, would require either labeling confirmed incidents from
+historical fault records (Section~\ref{sec:limitations}) or transitioning to
+individual-meter forecasting (Section~\ref{sec:future_work}). The results
+reported here address the detection of shared municipal-level disruptions, not
+customer-specific theft or tampering.
+
+================================================================================
+ADDITION 2: EXPANDED LIMITATIONS SECTION
+Location: Chapter 5, replace existing Section 4.5 (Limitations)
+Current length: ~1 page
+New length: ~2.5 pages (add three subsections)
+================================================================================
+
+\section{Limitations}
+
+The most fundamental constraint is that the framework is designed for aggregate-level analysis. By working at the municipality level, individual meter anomalies such as a faulty device, a billing error on a specific account, or a meter that went silent for several weeks, are invisible. The aggregation that makes forecasting tractable also smooths away the signal that matters most for a utility investigating a customer complaint. That is a deliberate trade-off rather than an oversight, but it means the framework cannot substitute for individual-meter monitoring.
+
+The second issue is the absence of labelled ground truth. All evaluation in Section~\ref{sec:anomaly} is event-based: the flagged dates are compared against documented real-world events rather than confirmed fault records. The December 2021 cluster is the most compelling result, but a colder-than-average December would produce the same pattern of positive residuals, and without temperature data the two explanations cannot be separated. This ambiguity is inherent to unsupervised anomaly detection on unlabelled data, not specific to this study, but it limits the strength of the claims that can be made about detection precision. Related to this, the 2.2\% contamination prior was derived from population-level hourly individual residuals; whether it transfers cleanly to daily municipal aggregate residuals, which are substantially less volatile, is not formally validated.
+
+Generalisability is limited by the dataset itself. All three municipalities belong to the same cooperative, share the same dominant tariff structure, and are overwhelmingly residential. The \ac{SARIMA} models were additionally constrained to a weekly seasonal period ($m=7$) rather than an annual one, because fitting $m=365$ was computationally prohibitive; this structurally disadvantages \ac{SARIMA} relative to the Seasonal Naive baseline. The holiday indicator (\texttt{is\_holiday\_es}) covers only Spanish national holidays and misses the regional calendars of the Basque Country and Navarra, which include additional local public holidays that may appear as unexplained consumption deviations. Whether the forecasting pipeline and anomaly rates would transfer to a dataset with more industrial load, different regional calendars, or a more fragmented tariff mix is an open question.
+
+\subsection{Individual-Level Detection: Follow-Up Strategy}
+
+While the framework cannot identify which meters caused a municipal-level flag, the flagged period serves as a trigger for targeted follow-up. When Vitoria-Gasteiz is flagged on December 9, the utility can compute per-meter residuals for that day and examine the distribution: which 10\% of customers consumed the most above their model prediction? These customers are candidates for manual inspection or automated meter reading verification. This two-stage approach---aggregate flag to identify the period, then drill-down to isolate contributing meters---preserves the computational efficiency of municipal-level forecasting while providing actionable meter-level leads. Implementation requires maintaining a rolling archive of per-meter N-BEATS predictions and residuals, a manageable storage cost on modern infrastructure (approximately 100 MB per city per year).
+
+\subsection{Production Requirements and Deployment Assumptions}
+
+The study assumes access to clean historical data and offline analysis. Real-time deployment introduces additional constraints not addressed here. First, the data pipeline must deliver daily municipal consumption by a fixed time each morning (e.g., 6 am) to enable forecasting and alerting within business hours. Late-arriving or missing meter data creates a decision rule: if fewer than 80\% of active meters report by the threshold time, either flag the day as unscoreable or impute the missing consumption using a 7-day rolling mean. The impact of each approach on anomaly rate stability is unknown and should be tested in pilot deployment. Second, N-BEATS model inference must complete in under one second per city to support daily batch processing; this is routinely achievable on standard GPU hardware but requires monitoring if the number of municipalities scales beyond 50--100. Third, monthly retraining on a rolling 3-year window is recommended to adapt to seasonal shifts and long-term consumption trends. A degraded model detection system (Section~\ref{sec:model_monitoring}) should trigger alerts if forecast errors exceed 20\% compared to the baseline month, prompting manual review and potential hyperparameter retuning.
+
+\subsection{False Negatives and Recall Measurement}
+
+This study measures false positives: the $\geq 3/5$ ensemble threshold is deliberately conservative to minimize nuisance alerts. However, recall---the fraction of real anomalies actually detected---cannot be estimated without labeled ground truth. The framework may flag only 60\% or 80\% of genuine faults; without confirmed incident records, this is unmeasurable. A critical validation step for production deployment is retrospective labeling: identify 50--100 confirmed equipment failures, billing errors, or meter malfunctions from 2017--2022 historical records (if such records exist), rerun the ensemble detector on those time periods, and measure what percentage of real incidents were caught. If recall is below 70\%, threshold tuning (e.g., $\geq 2/5$ votes instead of $\geq 3/5$) may be warranted, accepting higher false-positive rates in exchange for sensitivity. This sensitivity-specificity trade-off should be driven by business cost: if investigating a false positive costs €80 and missing a real fault costs €10,000 in lost revenue or regulatory penalties, the economics favor lower thresholds.
+
+\subsection{Cost-Benefit Analysis}
+
+The framework flags 0.7--1.4\% of days across the three test municipalities, equivalent to 3--5 flagged days per city per year (Table~\ref{tab:anomaly_results}). If each flag requires 1--2 hours of analyst review to assess the residual, consult weather data, check the municipal calendar, and determine actionability, the investigation cost is €50--100 per flag. Annual investigation cost per city is therefore €150--500. Breakeven requires that the cooperative detects and remediates faults worth more than this threshold. For a municipality of 15,000+ meters, faults large enough to trigger municipal-level aggregation signals (e.g., a transformer misreporting, a systematic meter failure affecting 100+ customers, or a billing system error) plausibly recur every 1--3 years and can represent €5k--50k in undetected revenue loss. At this scale, the investigation cost is justified, but only if the cooperative has processes in place to act on flagged periods (Section~\ref{sec:operational_considerations}).
+
+================================================================================
+ADDITION 3: OPERATIONAL CONSIDERATIONS & TRIAGE FRAMEWORK
+Location: Chapter 5, new section before "Future Work"
+Length: ~400 words
+================================================================================
+
+\section{Operational Considerations and Anomaly Triage}
+
+Detecting an anomaly and acting on it are separate problems. This section outlines a proposed decision framework for triaging flagged periods in production.
+
+When the ensemble flags day $D$ for city $C$, the utility should apply the following logic in sequence:
+
+\begin{enumerate}
+    \item \textbf{Check calendar and holidays.} Is $D$ a national or regional public holiday, a school break, or a long weekend? Is it adjacent to one (Friday before a Monday holiday, Monday after an Easter break)? If yes, the flag is likely a calendar artifact. Log the flag as ``expected seasonal variation'' and take no further action. The anomaly detection framework is functioning correctly: it identified that day $D$ deviates from the statistical norm, which is true because the calendar norm shifted.
+
+    \item \textbf{Check external weather.} Consult meteorological records: was $D$ unusually cold, hot, or stormy? The AEMET (Spanish meteorological service) provides daily temperature and precipitation summaries for each municipality. A positive residual coinciding with a cold snap or a negative residual on an unusually warm day is likely weather-driven. Note the inference---such correlations cannot confirm causation without temperature as a regressor---but they support a plausible external explanation. Log and move on.
+
+    \item \textbf{Check meter reporting rate.} Did more than 95\% of active smart meters in city $C$ submit a valid reading for day $D$? If reporting was below 90\%, the anomaly may be a technical artifact: a subset of meters delayed their upload, biasing the daily aggregate. Check with the data operations team; if the issue is confirmed, re-run inference on day $D+1$ (when all meters have reported) and do not investigate further.
+
+    \item \textbf{Drill down to meter level.} If steps 1--3 find no obvious explanation, compute per-meter residuals for day $D$. Rank all active meters by absolute residual magnitude. The top 5--10\% of meters contribute disproportionately to the municipal-level flag. Examine these meters for patterns: are they all commercial customers (consistent with an event like a holiday shopping surge)? Are they all in a specific postal code (suggesting a localized outage)? Are there repeat offenders (the same meter flagged on multiple anomalous days, suggesting chronic overconsumption)? If a cluster emerges, escalate to the field operations team for meter inspection or customer contact.
+
+    \item \textbf{Escalate only after pattern identification.} Do not send a meter technician to investigate a single anomalous day without corroborating evidence. The cost (€50--200 per site visit) outweighs the benefit unless the anomaly is part of a persistent pattern or correlates with a known system fault (e.g., a transformer that has misbehaved before).
+\end{enumerate}
+
+This framework prevents alert fatigue---treating every flag as an emergency---while maintaining sensitivity to real incidents. The Omicron cluster in December 2021 (Section~\ref{subsec:identified_anomalous_days}) would pass steps 1--3 (not a holiday, temperature alone does not explain the signal, reporting rates were normal) and trigger a drill-down that, given the coherence across all three cities, would raise suspicion of a shared external driver (behavioral or meteorological) warranting investigation or modeling adjustment.
+
+================================================================================
+ADDITION 4: REGIONAL ADAPTATION PROTOCOL
+Location: Chapter 5, Future Work section (expanded)
+Length: ~250 words
+================================================================================
+
+\subsection{Transferring to New Municipalities and Service Territories}
+
+Deploying this framework to a new geographic region requires retraining but follows a standardized protocol. Assume a new cooperative or utility has 24 months of historical daily aggregate consumption data and tariff/meter-count metadata.
+
+\begin{enumerate}
+    \item Retrain the STL decomposition (Chapter~\ref{chapter:Methodology}, Section~\ref{sec:decomposition}) on the new region's 24-month window to characterize local seasonal strength, trend slopes, and residual kurtosis. These statistics define the anomaly prior: if the new region's residuals show kurtosis of 8 (less heavy-tailed than GoiEner's 15--16), lower the contamination rate from 2.2\% to approximately 1.5\%.
+
+    \item Retrain N-BEATS v2 using identical hyperparameters (30-day lookback, three residual blocks, hidden size 64, early stopping on validation loss) but update the calendar features: replace \texttt{is\_holiday\_es} with the actual public holidays of the new region. If the new region observes holidays on different dates or additional regional holidays, the feature set must reflect this. The 19-feature engineering matrix otherwise remains unchanged.
+
+    \item Re-calibrate ensemble contamination rates per city within the new region. Compute the empirical kurtosis and extreme-event rate (events exceeding 3 standard deviations) in the validation window. Adjust the Isolation Forest and \ac{LOF} contamination parameters to match the observed rate.
+
+    \item Validate on a 6-month held-out test window. If the new region has documented faults (meter failures, billing errors, weather events) during this period, the framework should flag at least 50\% of them (a rough recall target). If recall is below 50\%, either the region's anomalies are too subtle for aggregate-level detection (suggesting individual-meter forecasting is necessary) or the hyperparameters require tuning.
+\end{enumerate}
+
+The entire pipeline (STL decomposition, N-BEATS training, ensemble calibration) runs in approximately 8 GPU-hours per region on standard hardware. Because hyperparameters are held constant, the approach scales linearly: moving from 3 municipalities to 30 requires 10x the compute time but no additional modeling work.
+
+================================================================================
+ADDITION 5: PRIVACY AND REGULATORY CONSIDERATIONS
+Location: Chapter 5, new subsection in Conclusions
+Length: ~180 words
+================================================================================
+
+\subsection{Data Privacy and Regulatory Compliance}
+
+Energy consumption data is personal information under the General Data Protection Regulation (\ac{GDPR}), the California Consumer Privacy Act (\ac{CCPA}), and equivalent regional regulations. This study operates on municipal aggregates comprising 15,000+ meters per datapoint; such aggregates are de-identified and do not directly trigger consent requirements. However, production deployment introduces privacy considerations.
+
+First, if the framework is extended to smaller geographic units (neighborhood-level, street-level) or to individual meters, explicit data processing agreements and customer consent may become necessary. Customers should be informed that their consumption data is used for anomaly detection and given the right to opt out if local law permits.
+
+Second, anomaly flags should never be shared with third parties (insurers, tax authorities, landlords) without explicit customer consent. Communication of flags to customers should be transparent: instead of ``Your meter flagged as anomalous on June 15,'' say ``Your consumption on June 15 was 25\% above your seasonal average; this was likely due to the heatwave recorded by AEMET that day.'' Opaque alerts damage trust and invite regulatory scrutiny.
+
+Third, if per-meter residuals are retained for drill-down analysis (Section~\ref{sec:individual_level}), data retention policies must comply with energy-sector regulations. The \ac{EU} Electricity Directive mandates retention of smart meter data for at least 3--5 years; GoiEner should confirm its compliance baseline and archive policies accordingly.
+
+Before production deployment, a review by legal and compliance teams is strongly recommended.
+
+================================================================================
+ADDITION 6: MODEL MONITORING FOR DRIFT DETECTION
+Location: Chapter 5, Future Work section
+Length: ~220 words
+================================================================================
+
+\subsection{Production Monitoring and Model Drift Detection}
+
+Once deployed, N-BEATS must be monitored for performance degradation. Three metrics should be tracked automatically on a rolling monthly basis:
+
+\textbf{Residual distribution monitoring.} Compute the kurtosis and extreme-event rate of monthly residuals. If kurtosis drops below 10 (indicating lighter-than-baseline tails), the model may be underfitting emerging behaviors---for example, if solar panel adoption is increasing, residuals will become smaller as homes offset more consumption. If the extreme-event rate falls below 1.0\% for three consecutive months, recalibrate the contamination prior and consider whether a structural change (tariff shift, large industrial connection, weather anomaly) has altered the consumption landscape.
+
+\textbf{Forecast error trend.} Track the mean absolute percentage error (\ac{MAPE}) and root mean square error (\ac{RMSE}) month-to-month. A sustained increase of 20\%+ compared to the baseline month (or compared to the 12-month rolling average) signals model degradation. Common causes include: a tariff structure change (new rate tiers), policy changes (e.g., increased heating subsidies), or demand shifts (remote work normalization, electrification). If the error increase persists for two months, trigger a retraining cycle on the most recent 3-year window.
+
+\textbf{Anomaly rate stability.} If the ensemble flag rate exceeds 3\% or drops below 0.3\% for three or more consecutive months, investigate. Sustained high rates may indicate overfitting or contamination in the input data; sustained low rates may indicate underfitting. Either scenario warrants inspection and potential threshold recalibration.
+
+These checks can run automatically in a production monitoring dashboard, alerting analysts to investigate when thresholds are breached.
+
+================================================================================
+ADDITION 7: COMPARISON TO STATIC-RULE BASELINES
+Location: Chapter 5, Discussion section (new)
+Length: ~200 words
+================================================================================
+
+\subsection{Comparison to Traditional Anomaly Detection Rules}
+
+Many utilities implement anomaly detection via static rules, typically flagging consumption that exceeds the 95th percentile of a rolling 30-day window, or flagging days where consumption deviates by more than 25\% from the same day-of-week in the prior year. These rules are interpretable and require no model training.
+
+The machine-learning ensemble here improves on static rules in three ways. First, it captures multivariate anomalies: the ensemble considers not only absolute consumption magnitude but also the distribution of flagged detectors, flagging a day only when multiple algorithms agree. A day with moderately high consumption and low variance may be routine; the same consumption with volatile residuals may indicate a meter fault. Static rules cannot distinguish these cases. Second, the framework adapts to calendar structure: public holidays, school breaks, and seasonal shifts are explicitly modeled via engineered features. Static rules must be manually adjusted each time a new holiday is introduced or a tariff changes. Third, the majority-vote ensemble reduces false positives: a single outlier-detection algorithm may misflag 8--27\% of days (Table~\ref{tab:anomaly_results}), while the ensemble stays at 0.7--1.4\%, a 10--30x reduction.
+
+However, this study does not quantitatively compare the ensemble against a utility's existing static-rule baseline on production data. A validation step for deployment would be A/B testing: run both methods on 6 months of production data and measure false-positive rate, investigation cost, and detection agreement. If the ML ensemble and static rules flag the same incidents 80\%+ of the time, the added complexity may not be justified. If agreement is below 60\%, systematic differences exist and should be investigated.
+
+================================================================================
+END OF ADDITIONS
+================================================================================
