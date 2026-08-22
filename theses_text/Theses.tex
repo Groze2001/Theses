@@ -297,7 +297,7 @@ The methods are evaluated across three municipalities in northern Spain from the
     \acro{sMAPE}{Symmetric Mean Absolute Percentage Error}
     \acro{pp}{percentage point}
     \acro{SARIMA}{Seasonal Autoregressive Integrated Moving Average}
-    \acro{c{SARIMA}X}{Seasonal Autoregressive Integrated Moving Average with eXogenous inputs}
+    \acro{\ac{SARIMAX}}{Seasonal Autoregressive Integrated Moving Average with eXogenous inputs}
     \acro{RF}{Random Forest}
     \acro{NBEATS}[N-BEATS]{Neural Basis Expansion Analysis for Time Series}
 \end{acronym}
@@ -510,7 +510,7 @@ Anomaly detection in this field is typically framed as finding patterns that dev
 
 \subsection{Prediction-Based and Reconstruction-Based Approaches}
 
-Prediction-based anomaly detection relies on forecasting models to establish a baseline for "normal" behavior, flagging any significant deviations between the predicted and actual values as anomalies. Transformer-based architectures and deep sequence models have gained traction here because they excel at capturing complex temporal patterns. For instance, Zhang et al. \cite{zhang_power_2021} integrated a Transformer forecasting model with K-Means clustering to categorize anomalous residuals, a method that outperformed traditional \ac{LSTM} baselines in hourly energy datasets. Mao et al. \cite{mao_research_2024} introduced the AF-GS-Random-Forest framework, which uses autoformer predictions and a Random Forest classifier to analyse residuals, reporting improvements in precision, recall, and F1-scores. Outside the scope of the SLR, Shaikh et al. show that N-BEATS applied to a multi-customer smart meter dataset outperforms c{LSTM}, GRU, and temporal convolutional networks on short-term energy consumption forecasting, establishing it as a practical alternative to attention-based architectures when training data is limited \cite{shaikh_nbeats_energy_2022}.
+Prediction-based anomaly detection relies on forecasting models to establish a baseline for "normal" behavior, flagging any significant deviations between the predicted and actual values as anomalies. Transformer-based architectures and deep sequence models have gained traction here because they excel at capturing complex temporal patterns. For instance, Zhang et al. \cite{zhang_power_2021} integrated a Transformer forecasting model with K-Means clustering to categorize anomalous residuals, a method that outperformed traditional \ac{LSTM} baselines in hourly energy datasets. Mao et al. \cite{mao_research_2024} introduced the AF-GS-Random-Forest framework, which uses autoformer predictions and a Random Forest classifier to analyse residuals, reporting improvements in precision, recall, and F1-scores. Outside the scope of the SLR, Shaikh et al. show that N-BEATS applied to a multi-customer smart meter dataset outperforms \ac{LSTM}, GRU, and temporal convolutional networks on short-term energy consumption forecasting, establishing it as a practical alternative to attention-based architectures when training data is limited \cite{shaikh_nbeats_energy_2022}.
 
 Reconstruction-based methods extend this by operating on latent-space representations rather than direct forecasting. Turowski et al. \cite{turowski_enhancing_2022} used conditional Invertible Neural Networks \ac{CINN} and conditional Variational Autoencoders \ac{CVA} to map raw load curves into a latent space where anomalies become more distinct. Both supervised and unsupervised detection models performed significantly better in this transformed space; representation quality appears to be an upstream bottleneck for detection, not a downstream one.
 
@@ -1086,7 +1086,7 @@ Two candidate forecasting targets were evaluated before selecting a final variab
 
 The distinction matters for two reasons. First, the three municipalities differ substantially in size (Vitoria-Gasteiz is roughly twice as large as Pamplona/Iruna in the GoiEner dataset), so raw aggregates are not directly comparable across cities. Second, the cooperative's user base grew continuously over the 2017--2022 observation window as new smart meters were installed; this growth introduces a spurious upward trend into \texttt{avg\_kwh} that the models must learn to separate from genuine per-capita consumption dynamics. Dividing by $n_{\text{users}}$ removes both sources of confounding, making the three series comparable and stabilising the trend component.
 
-To verify empirically that the normalised target does not degrade forecast accuracy, both targets were run through the same ten-model pipeline under identical hyperparameter settings and the same 70/15/15 train/validation/test split. Table~\ref{tab:target_comparison} reports \ac{MAPE} and \ac{sMAPE} for each model and city; c{MAE} and c{RMSE} are excluded because the two targets have different absolute scales and are therefore not directly comparable on those metrics. A negative delta (column $\Delta$c{MAPE}) indicates that \texttt{avg\_kwh\_per\_user} yields a lower error, i.e. is the better-fitting target for that model.
+To verify empirically that the normalised target does not degrade forecast accuracy, both targets were run through the same ten-model pipeline under identical hyperparameter settings and the same 70/15/15 train/validation/test split. Table~\ref{tab:target_comparison} reports \ac{MAPE} and \ac{sMAPE} for each model and city; c{MAE} and c{RMSE} are excluded because the two targets have different absolute scales and are therefore not directly comparable on those metrics. A negative delta (column $\Delta$\ac{MAPE}) indicates that \texttt{avg\_kwh\_per\_user} yields a lower error, i.e. is the better-fitting target for that model.
 
 \begin{table}[htbp]
 \centering
@@ -1095,9 +1095,9 @@ To verify empirically that the normalised target does not degrade forecast accur
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{lccccc}
 \toprule
-\textbf{Municipality} & \multicolumn{2}{c}{\texttt{avg\_kwh\_per\_user}} & \multicolumn{2}{c}{\texttt{avg\_kwh}} & \textbf{$\Delta$c{MAPE} (\ac{pp})} \\
+\textbf{Municipality} & \multicolumn{2}{c}{\texttt{avg\_kwh\_per\_user}} & \multicolumn{2}{c}{\texttt{avg\_kwh}} & \textbf{$\Delta$\ac{MAPE} (\ac{pp})} \\
 \cmidrule(lr){2-3}\cmidrule(lr){4-5}
- & c{MAPE} (\%) & sc{MAPE} (\%) & c{MAPE} (\%) & sc{MAPE} (\%) & \\
+ & \ac{MAPE} (\%) & s\ac{MAPE} (\%) & \ac{MAPE} (\%) & s\ac{MAPE} (\%) & \\
 \midrule
 Vitoria-Gasteiz        & 38.95 & 30.48 & \textbf{5.31} & \textbf{5.30} & $+$33.64 \\
 Donostia/San Sebastian & 19.50 & 20.10 & \textbf{3.38} & \textbf{3.40} & $+$16.12 \\
@@ -1107,17 +1107,17 @@ Pamplona/Iruna         &  5.78 &  5.94 & \textbf{4.42} & \textbf{4.44} & $+$1.36
 }
 \end{table}
 
-The empirical comparison reveals that \texttt{avg\_kwh\_per\_user} substantially degrades forecasting accuracy on two of the three cities: c{MAPE} increases by 33.6 percentage points on Vitoria-Gasteiz and 16.1 on Donostia/San Sebastian relative to the raw aggregate. This deterioration arises because dividing by the daily active user count creates a very small-valued series (per-user hourly kWh values are typically below 0.5), where small absolute forecast errors produce disproportionately large percentage errors, causing \ac{MAPE} to become an unreliable optimization signal. Only Pamplona/Iruna, the smallest city with the most stable user base, shows comparable performance across the two targets ($\Delta$c{MAPE} $=$ 1.4~\ac{pp}).
+The empirical comparison reveals that \texttt{avg\_kwh\_per\_user} substantially degrades forecasting accuracy on two of the three cities: \ac{MAPE} increases by 33.6 percentage points on Vitoria-Gasteiz and 16.1 on Donostia/San Sebastian relative to the raw aggregate. This deterioration arises because dividing by the daily active user count creates a very small-valued series (per-user hourly kWh values are typically below 0.5), where small absolute forecast errors produce disproportionately large percentage errors, causing \ac{MAPE} to become an unreliable optimization signal. Only Pamplona/Iruna, the smallest city with the most stable user base, shows comparable performance across the two targets ($\Delta$\ac{MAPE} $=$ 1.4~\ac{pp}).
 
 Based on both the conceptual stability argument and the clear empirical evidence, \texttt{avg\_kwh} is adopted as the primary forecasting target for all subsequent analysis. All reported metrics, anomaly residuals, and visualisations in this chapter use this series.
 
 \subsection{Models Evaluated}
 
-Ten models spanning five families are benchmarked against each other \cite{hernandez_detection_2024, mao_research_2024, zhang_power_2021}. The selection follows directly from the literature review in Chapter~2. Prediction-based anomaly detection requires a forecasting model whose residuals serve as the anomaly signal; the review showed that sequence models (c{LSTM}, Transformer variants) and residual block architectures (N-BEATS) consistently outperform statistical baselines on energy time series, while shallow models remain competitive when supplied with strong hand-crafted features \cite{hernandez_detection_2024, zangrando_anomaly_2022}. Transformer-based models, although well-represented in the literature, require substantially larger training sets and significantly higher computational resources than were available for three city-level series of approximately 1,300 training days each \cite{himeur_artificial_2021}; they are therefore excluded. Within the neural families, \ac{LSTM} is included as the dominant sequence architecture in the reviewed studies, N-BEATS as a strong residual block alternative that requires no structural assumptions about the series, and a Seasonal Naive hybrid as a way to encode domain knowledge (annual seasonality) directly into the forecasting structure rather than leaving it for the model to discover. The five baselines provide a performance floor: any model that cannot outperform a 7-day rolling mean or a year-ago copy on a dataset with strong annual structure should not be used for anomaly detection.
+Ten models spanning five families are benchmarked against each other \cite{hernandez_detection_2024, mao_research_2024, zhang_power_2021}. The selection follows directly from the literature review in Chapter~2. Prediction-based anomaly detection requires a forecasting model whose residuals serve as the anomaly signal; the review showed that sequence models (\ac{LSTM}, Transformer variants) and residual block architectures (N-BEATS) consistently outperform statistical baselines on energy time series, while shallow models remain competitive when supplied with strong hand-crafted features \cite{hernandez_detection_2024, zangrando_anomaly_2022}. Transformer-based models, although well-represented in the literature, require substantially larger training sets and significantly higher computational resources than were available for three city-level series of approximately 1,300 training days each \cite{himeur_artificial_2021}; they are therefore excluded. Within the neural families, \ac{LSTM} is included as the dominant sequence architecture in the reviewed studies, N-BEATS as a strong residual block alternative that requires no structural assumptions about the series, and a Seasonal Naive hybrid as a way to encode domain knowledge (annual seasonality) directly into the forecasting structure rather than leaving it for the model to discover. The five baselines provide a performance floor: any model that cannot outperform a 7-day rolling mean or a year-ago copy on a dataset with strong annual structure should not be used for anomaly detection.
 
 \begin{itemize}
     \item Baselines: Naive (repeat yesterday's value), Seasonal Naive (repeat the value from exactly 365 days prior), Rolling Mean (7-day average), Ridge regression on the engineered features, and Random Forest (300 estimators, max depth 12).
-    \item Statistical: \ac{SARIMA} with order $(1,1,1)\times(1,1,1)_7$, fitted in log-space to handle non-negativity; \ac{c{SARIMA}X} with the same differencing order and calendar variables as exogenous regressors.
+    \item Statistical: \ac{SARIMA} with order $(1,1,1)\times(1,1,1)_7$, fitted in log-space to handle non-negativity; \ac{SARIMAX}} with the same differencing order and calendar variables as exogenous regressors.
     \item Neural networks: \ac{LSTM}~v2, a dual-stream architecture that processes history features through a sequential \ac{LSTM} \cite{hochreiter_lstm_1997} (hidden size 48, 2 layers, dropout 0.3) while a static encoder handles calendar context; \ac{NBEATS}~v2, adapted from the N-BEATS architecture of \cite{oreshkin_nbeats_2020}: unlike the original purely univariate design, this variant conditions three residual blocks (hidden size 64, dropout 0.2) on the full 19-feature engineering matrix as exogenous context alongside the historical lookback; and Hybrid~v2, which uses the Seasonal Naive 365-day forecast as a structural baseline and trains a residual \ac{LSTM} to correct its systematic errors.
 \end{itemize}
 
@@ -1128,21 +1128,21 @@ All models are trained on the training split, with hyperparameters and early sto
 
 To quantify the contribution of the engineered features, all models were run a second time using only the nine calendar features derived from the date (weekend flag, public holiday flag, bridge-day flag, and the sin/cos encodings of day-of-week, month, and week-of-year). The ten history features (lags, rolling statistics, and change rates) were entirely removed. This creates a controlled ablation: the only difference between the two runs is whether the models have access to consumption history beyond the raw lookback window.
 
-Table~\ref{tab:feature_ablation} reports the c{MAPE} for each model under both conditions. The results reveal four distinct behavioural groups.
+Table~\ref{tab:feature_ablation} reports the \ac{MAPE} for each model under both conditions. The results reveal four distinct behavioural groups.
 
-Traditional models benefit substantially. Ridge regression and Random Forest cannot learn temporal autocorrelation on their own; without explicit lag and rolling features their c{MAPE} climbs to 10--19\% across all cities. With the history features the same models drop to 3--8\%, a reduction of 7--14 percentage points. This confirms that feature engineering is the primary driver of accuracy for shallow models.
+Traditional models benefit substantially. Ridge regression and Random Forest cannot learn temporal autocorrelation on their own; without explicit lag and rolling features their \ac{MAPE} climbs to 10--19\% across all cities. With the history features the same models drop to 3--8\%, a reduction of 7--14 percentage points. This confirms that feature engineering is the primary driver of accuracy for shallow models.
 
-\ac{SARIMA} benefits substantially from exogenous calendar regressors. The \emph{No FE} column corresponds to plain \ac{SARIMA} (no exogenous variables); the \emph{With FE} column reports \ac{c{SARIMA}X} using the nine calendar features as exogenous input. The improvement is large on Donostia ($-$16~\ac{pp}) and Pamplona ($-$21~\ac{pp}), though Vitoria remains difficult for both (52.99\% even with \ac{c{SARIMA}X}). c{SARIMA}-family models are highly city-dependent.
+\ac{SARIMA} benefits substantially from exogenous calendar regressors. The \emph{No FE} column corresponds to plain \ac{SARIMA} (no exogenous variables); the \emph{With FE} column reports \ac{SARIMAX}} using the nine calendar features as exogenous input. The improvement is large on Donostia ($-$16~\ac{pp}) and Pamplona ($-$21~\ac{pp}), though Vitoria remains difficult for both (52.99\% even with \ac{SARIMAX}}). \ac{SARIMA}-family models are highly city-dependent.
 
 N-BEATS v2 is feature-agnostic. The differences between the two runs are below half a percentage point on every city ($|\Delta| \leq 0.5$~\ac{pp}). N-BEATS v2 already learns temporal patterns from its 30-day raw lookback window; explicit lag features add no additional signal.
 
-\ac{LSTM} v2 and Hybrid v2 are hurt by the extra features. \ac{LSTM} v2 is 2--3~\ac{pp} \emph{worse} with feature engineering than without it. The likely cause is redundancy: the sequential \ac{LSTM} stream already reads the raw lookback window, so feeding it explicit lag and rolling features creates correlated inputs that confuse the gradient signal during training and encourage overfitting. Hybrid v2 shows an even more pronounced deterioration (10--14~\ac{pp}), because the Residualc{LSTM} corrector receives the same redundant lag features that are already implicitly captured by the Seasonal Naive component, degrading its ability to model the true residual.
+\ac{LSTM} v2 and Hybrid v2 are hurt by the extra features. \ac{LSTM} v2 is 2--3~\ac{pp} \emph{worse} with feature engineering than without it. The likely cause is redundancy: the sequential \ac{LSTM} stream already reads the raw lookback window, so feeding it explicit lag and rolling features creates correlated inputs that confuse the gradient signal during training and encourage overfitting. Hybrid v2 shows an even more pronounced deterioration (10--14~\ac{pp}), because the Residual \ac{LSTM} corrector receives the same redundant lag features that are already implicitly captured by the Seasonal Naive component, degrading its ability to model the true residual.
 
-The overall picture is that feature engineering is a net positive for the benchmark as a whole, because the large gains for Ridge, \ac{RF}, and \ac{c{SARIMA}X} outweigh the modest losses for the neural sequence models. However, if only neural models are considered, the raw calendar context is sufficient and history features are at best neutral. The feature ablation also provides indirect guidance for future individual-level work: \ac{NBEATS}~v2's insensitivity to engineered history features suggests its accuracy derives from structural patterns in the raw lookback window rather than hand-crafted lag statistics, a property likely to be more robust to the higher noise levels of individual smart meter series than the feature-dependent models.
+The overall picture is that feature engineering is a net positive for the benchmark as a whole, because the large gains for Ridge, \ac{RF}, and \ac{SARIMAX}} outweigh the modest losses for the neural sequence models. However, if only neural models are considered, the raw calendar context is sufficient and history features are at best neutral. The feature ablation also provides indirect guidance for future individual-level work: \ac{NBEATS}~v2's insensitivity to engineered history features suggests its accuracy derives from structural patterns in the raw lookback window rather than hand-crafted lag statistics, a property likely to be more robust to the higher noise levels of individual smart meter series than the feature-dependent models.
 
 \begin{table}[htbp]
 \centering
-\caption{\ac{MAPE} (\%) under two feature conditions. Lowest c{MAPE} per column in bold.}
+\caption{\ac{MAPE} (\%) under two feature conditions. Lowest \ac{MAPE} per column in bold.}
 \label{tab:feature_ablation}
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{lrrrrrrrrr}
@@ -1195,7 +1195,7 @@ All other features (17)       & $<$0.001 & 0.009 & $<$0.001 \\
 
 \subsection{Forecasting Results}
 
-Table~\ref{tab:forecast_results} reports test-set results. Several patterns stand out. The two simplest baselines (Naive and Rolling Mean) range from 16\% to 33\% \ac{MAPE} depending on the city, far above every feature-based and neural model, ruling out recent-history-only approaches for this dataset. Seasonal Naive does substantially better by reusing year-ago values, settling at 9--12\% \ac{MAPE} across the three cities. \ac{SARIMA} is unreliable: it reaches 74.85\% on Vitoria-Gasteiz despite log-space fitting, and even on its best city it trails the neural models. \ac{c{SARIMA}X} is more competitive and achieves a strong 3.15\% on Donostia/San Sebastian, but collapses to 52.99\% on Vitoria-Gasteiz, making it too city-dependent to serve as a general solution.
+Table~\ref{tab:forecast_results} reports test-set results. Several patterns stand out. The two simplest baselines (Naive and Rolling Mean) range from 16\% to 33\% \ac{MAPE} depending on the city, far above every feature-based and neural model, ruling out recent-history-only approaches for this dataset. Seasonal Naive does substantially better by reusing year-ago values, settling at 9--12\% \ac{MAPE} across the three cities. \ac{SARIMA} is unreliable: it reaches 74.85\% on Vitoria-Gasteiz despite log-space fitting, and even on its best city it trails the neural models. \ac{SARIMAX}} is more competitive and achieves a strong 3.15\% on Donostia/San Sebastian, but collapses to 52.99\% on Vitoria-Gasteiz, making it too city-dependent to serve as a general solution.
 
 Ridge Features and Random Forest include \texttt{pct\_rank\_global}, the percentile rank of a city's consumption relative to all other municipalities on the \emph{same day}, which requires cross-sectional information that is unavailable at real forecast time. These models are therefore marked with an asterisk and excluded from the best-model comparison. Among the remaining models, \ac{NBEATS} v2 achieves the most consistent results across all three cities (\ac{MAPE} of 5.31\% in Vitoria-Gasteiz, 3.38\% in Donostia/San Sebastian, and 4.42\% in Pamplona/Iruna) and is therefore selected as the base forecaster for the anomaly detection stage. Hybrid v2 is inconsistent (22\%--38\% across the three cities), and \ac{LSTM} v2 trails \ac{NBEATS} v2 by 2.4--4.4 percentage points. The reliability of these single-run results is assessed in Section~\ref{subsec:bootstrap}.
 
@@ -1206,7 +1206,7 @@ Ridge Features and Random Forest include \texttt{pct\_rank\_global}, the percent
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{llcccc}
 \toprule
-\textbf{Municipality} & \textbf{Model} & \textbf{MAE} & \textbf{RMSE} & \textbf{c{MAPE} (\%)} & \textbf{sc{MAPE} (\%)} \\
+\textbf{Municipality} & \textbf{Model} & \textbf{MAE} & \textbf{RMSE} & \textbf{\ac{MAPE} (\%)} & \textbf{s\ac{MAPE} (\%)} \\
 \midrule
 \multirow{10}{*}{Vitoria-Gasteiz}
   & Naive                  & 0.0986 & 0.1149 & 31.30 & 38.69 \\
@@ -1214,9 +1214,9 @@ Ridge Features and Random Forest include \texttt{pct\_rank\_global}, the percent
   & Seasonal Naive (365d)  & 0.0344 & 0.0450 & 12.30 & 11.79 \\
   & Ridge Features$^{*}$ & 0.0150 & 0.0210 &  5.13 &  5.13 \\
   & Random Forest$^{*}$ & 0.0228 & 0.0264 &  7.35 &  7.68 \\
-  & c{SARIMA}                 & 0.2214 & 0.2392 & 74.85 & 132.38 \\
-  & c{SARIMA}X                & 0.1557 & 0.1691 & 52.99 &  77.55 \\
-  & c{LSTM} v2                & 0.0296 & 0.0392 &  9.67 &   9.98 \\
+  & \ac{SARIMA}                 & 0.2214 & 0.2392 & 74.85 & 132.38 \\
+  & \ac{SARIMAX}                & 0.1557 & 0.1691 & 52.99 &  77.55 \\
+  & \ac{LSTM} v2                & 0.0296 & 0.0392 &  9.67 &   9.98 \\
   & \textbf{N-BEATS v2}    & \textbf{0.0154} & \textbf{0.0207} & \textbf{5.31} & \textbf{5.30} \\
   & Hybrid v2              & 0.0640 & 0.0778 & 24.30 &  20.50 \\
 \midrule
@@ -1226,9 +1226,9 @@ Ridge Features and Random Forest include \texttt{pct\_rank\_global}, the percent
   & Seasonal Naive (365d)  & 0.0400 & 0.0523 & 10.68 & 10.32 \\
   & Ridge Features$^{*}$ & 0.0139 & 0.0193 &  3.53 &  3.62 \\
   & Random Forest$^{*}$ & 0.0228 & 0.0267 &  5.78 &  6.00 \\
-  & c{SARIMA}                 & 0.0541 & 0.0732 & 12.98 & 14.38 \\
-  & \textbf{c{SARIMA}X}       & \textbf{0.0109} & \textbf{0.0150} & \textbf{3.15} & \textbf{3.06} \\
-  & c{LSTM} v2                & 0.0244 & 0.0328 &  6.08 &   6.26 \\
+  & \ac{SARIMA}                 & 0.0541 & 0.0732 & 12.98 & 14.38 \\
+  & \textbf{\ac{SARIMAX}}       & \textbf{0.0109} & \textbf{0.0150} & \textbf{3.15} & \textbf{3.06} \\
+  & \ac{LSTM} v2                & 0.0244 & 0.0328 &  6.08 &   6.26 \\
   & N-BEATS v2             & 0.0132 & 0.0183 &  3.38 &   3.40 \\
   & Hybrid v2              & 0.1357 & 0.1557 & 37.77 &  30.38 \\
 \midrule
@@ -1238,9 +1238,9 @@ Ridge Features and Random Forest include \texttt{pct\_rank\_global}, the percent
   & Seasonal Naive (365d)  & 0.0338 & 0.0473 &  9.25 &  9.72 \\
   & Ridge Features$^{*}$ & 0.0136 & 0.0171 &  3.88 &  3.91 \\
   & Random Forest$^{*}$ & 0.0113 & 0.0139 &  3.12 &  3.19 \\
-  & c{SARIMA}                 & 0.0522 & 0.0663 & 14.92 & 14.64 \\
-  & c{SARIMA}X                & 0.0230 & 0.0265 &  6.23 &  6.48 \\
-  & c{LSTM} v2                & 0.0240 & 0.0305 &  6.82 &   6.88 \\
+  & \ac{SARIMA}                 & 0.0522 & 0.0663 & 14.92 & 14.64 \\
+  & \ac{SARIMAX}                & 0.0230 & 0.0265 &  6.23 &  6.48 \\
+  & \ac{LSTM} v2                & 0.0240 & 0.0305 &  6.82 &   6.88 \\
   & \textbf{N-BEATS v2}    & \textbf{0.0159} & \textbf{0.0227} & \textbf{4.42} & \textbf{4.44} \\
   & Hybrid v2              & 0.0823 & 0.1049 & 22.02 &  26.11 \\
 \bottomrule
@@ -1310,7 +1310,7 @@ Random Forest               & 5.42 & 0.03 & \textbf{3.28} & 0.02 & \textbf{4.65}
 
 The three target series are short, roughly 1,300 training days per city, and dominated by annual structure. Seasonal Naive does nothing more sophisticated than repeat last year's value, and it already reaches 9--12\% \ac{MAPE} (Table~\ref{tab:forecast_results}). That single fact sets the bar for the whole comparison: with this little data and this much seasonality, a model earns its place by capturing the annual cycle and calendar effects well, not by modeling long or complex sequences. It also rules out attention-based architectures outright; they need far more training data than three municipal series can offer.
 
-\ac{NBEATS}~v2 fits that requirement structurally. Its residual blocks decompose the series into trend and seasonal basis expansions on their own, conditioned on the 19-feature engineering matrix for calendar context. Ridge and Random Forest have no such mechanism; they need hand-crafted lag and rolling statistics to represent temporal structure at all. \ac{SARIMA} and \ac{c{SARIMA}X} fare worse still: Vitoria-Gasteiz's COVID-disrupted middle years push \ac{SARIMA} to 74.85\% \ac{MAPE}, well past anything workable.
+\ac{NBEATS}~v2 fits that requirement structurally. Its residual blocks decompose the series into trend and seasonal basis expansions on their own, conditioned on the 19-feature engineering matrix for calendar context. Ridge and Random Forest have no such mechanism; they need hand-crafted lag and rolling statistics to represent temporal structure at all. \ac{SARIMA} and \ac{SARIMAX}} fare worse still: Vitoria-Gasteiz's COVID-disrupted middle years push \ac{SARIMA} to 74.85\% \ac{MAPE}, well past anything workable.
 
 The ablation in Section~\ref{subsec:feature_impact} backs this up. Strip out all ten history features and \ac{NBEATS}'s \ac{MAPE} moves by at most 0.5 percentage points (Table~\ref{tab:feature_ablation}). Ridge and Random Forest lose 7--14pp under the same cut. That gap is why the \ac{NBEATS} result in Table~\ref{tab:forecast_results} can be trusted where the leakage-marked Ridge Features and Random Forest results cannot (Section~\ref{subsec:rf_importance}). Those two models lean on \texttt{pct\_rank\_global} and \texttt{zscore\_municipality}, both of which require same-day data from every other municipality and would not exist at real forecast time. N-BEATS never needed them. Its accuracy comes from the 30-day raw lookback and calendar encodings, features that are available on any given day in production.
 
@@ -1739,7 +1739,7 @@ This dissertation investigated pattern detection and anomaly identification in s
 
 The 19,709 retained users showed clear periodic structure at the daily cycle. Seasonal strength varied systematically across COVID-19 temporal segments and diverged sharply between economic sectors. Trend slopes were near zero in aggregate but showed growing heterogeneity over time. Residuals were consistently heavy-tailed across all periods, with approximately 2.2\% of observations exceeding three standard deviations.
 
-At the municipal aggregate level, \ac{NBEATS} v2 (a covariate-conditioned residual stack) achieved consistently strong forecasting accuracy across all three cities (bootstrap trimmed-mean \ac{MAPE} 3.71--5.20\%), outperforming the naive baselines, \ac{SARIMA}, \ac{c{SARIMA}X}, \ac{LSTM}, and the Seasonal Naive hybrid. Among the four leakage-free models validated by bootstrap, Random Forest posted the lowest cross-city average \ac{MAPE} (4.45\%), with \ac{NBEATS} v2 close behind (4.62\%) and Ridge third (4.96\%). \ac{NBEATS} v2 was retained as the base forecaster not for raw accuracy but for robustness: removing all engineered history features shifts its \ac{MAPE} by at most 0.5 percentage points, while Random Forest and Ridge lose 7--14 percentage points under the same cut.
+At the municipal aggregate level, \ac{NBEATS} v2 (a covariate-conditioned residual stack) achieved consistently strong forecasting accuracy across all three cities (bootstrap trimmed-mean \ac{MAPE} 3.71--5.20\%), outperforming the naive baselines, \ac{SARIMA}, \ac{SARIMAX}, \ac{LSTM}, and the Seasonal Naive hybrid. Among the four leakage-free models validated by bootstrap, Random Forest posted the lowest cross-city average \ac{MAPE} (4.45\%), with \ac{NBEATS} v2 close behind (4.62\%) and Ridge third (4.96\%). \ac{NBEATS} v2 was retained as the base forecaster not for raw accuracy but for robustness: removing all engineered history features shifts its \ac{MAPE} by at most 0.5 percentage points, while Random Forest and Ridge lose 7--14 percentage points under the same cut.
 
 Permutation feature importance explains that asymmetry. Random Forest and Ridge depend almost entirely on \texttt{lag\_1d}, yesterday's consumption, which accounts for 66.6\% and 62.7\% of their importance respectively; the remaining features contribute comparatively little. \ac{NBEATS} v2 spreads its dependence instead across the cyclical calendar features, with \texttt{sin\_dow} and \texttt{cos\_dow} together accounting for 44.7\% and no single feature exceeding 5.4\%. This is consistent with \ac{NBEATS} v2 already having direct access to the raw 30-day consumption window, which makes the lag-based features that the other two models rely on largely redundant for it.
 
